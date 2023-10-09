@@ -8,6 +8,17 @@ import { ProductoService } from '../../services/producto.service';
   ]
 })
 export class LayoutPageComponent {
+  public menuListInformeInventario =[
+    {label: 'Reporte lista de precios',url:''},
+    {label: 'Reporte existencias',url:''},
+    {label: 'Reporte linea producto',url:'formulario-linea-producto'},
+    {label: 'Reporte inventario valorizado',url:''},
+    {label: 'Reporte kardex inventario',url:''},
+    {label: 'Reporte auxiliar inventario', action: () => this.reporteAuxilioInventario()},
+    {label: 'informe rentabilidad',url:''},
+    {label: 'informe entrada de inventario',url:''},
+    {label: 'informe salida de inventario',url:''},
+  ]
 
   constructor(private productoService:ProductoService){}
 

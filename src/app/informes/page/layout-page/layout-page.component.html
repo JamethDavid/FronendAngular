@@ -13,8 +13,8 @@
     <button mat-button>Estados financieros basicos</button>
   </mat-menu>
   <button [matMenuTriggerFor]="menuInformesFacturacionPos" mat-button>Informes Facturacion pos</button>
-  <mat-menu #menuInformesFacturacionPos [ngStyle]="{width:'1000px'}">
-    <button mat-button class="ancho-flexible">Reporte factura cliente</button>
+  <mat-menu #menuInformesFacturacionPos >
+    <button mat-button >Reporte factura cliente</button>
     <button mat-button>Reporte venta por linea de producto fecha</button>
     <button mat-button>Reporte ventas por linea de producto solo</button>
     <button mat-button>Reporte ventas por zona fecha</button>
@@ -23,16 +23,9 @@
     <button mat-button>Reporte pedidos pendientes por factura</button>
   </mat-menu>
   <button [matMenuTriggerFor]="menuInformesInventarios" mat-button>Informes Inventarios</button>
-  <mat-menu #menuInformesInventarios>
-    <button mat-button>Reporte lista de precios</button>
-    <button mat-button>Reporte existencia</button>
-    <button mat-button>Reporte existencias linea producto</button>
-    <button mat-button>Reporte inventario valorizado</button>
-    <button mat-button>Reporte kardex de inventario</button>
-    <button mat-button (click)="reporteAuxilioInventario()">Reporte auxiliar inventario</button>
-    <button mat-button>Reporte de rentabilidad</button>
-    <button mat-button>Reporte entradas de inventario</button>
-    <button mat-button>Reporte salida de inventario</button>
+  <mat-menu #menuInformesInventarios = matMenu>
+    <button mat-menu-item *ngFor="let item of menuListInformeInventario" [routerLink]="item.url" (click)="item.action && item.action()"> {{ item.label }}
+    </button>
   </mat-menu>
 
   <button routerLink="" mat-button>Informes Clientes</button>
