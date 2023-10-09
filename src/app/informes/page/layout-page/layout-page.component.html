@@ -1,2 +1,44 @@
-<p>layout-page works!</p>
+<mat-toolbar color="primary">
+  <button mat-icon-button>
+    <mat-icon></mat-icon>
+  </button>
+  <samp>SISEM</samp>
+  <span class="example-spacer"></span>
+  <button [matMenuTriggerFor]="menuInformeContable" mat-button>Informes contable</button>
+  <mat-menu color="primary" #menuInformeContable>
+    <button mat-button>Declaracion de prestaciones</button>
+    <button mat-button>Provision de impuestos</button>
+    <button mat-button>Movimientos cuentas auxiliares</button>
+    <button mat-button>Libros oficiales</button>
+    <button mat-button>Estados financieros basicos</button>
+  </mat-menu>
+  <button [matMenuTriggerFor]="menuInformesFacturacionPos" mat-button>Informes Facturacion pos</button>
+  <mat-menu #menuInformesFacturacionPos [ngStyle]="{width:'1000px'}">
+    <button mat-button class="ancho-flexible">Reporte factura cliente</button>
+    <button mat-button>Reporte venta por linea de producto fecha</button>
+    <button mat-button>Reporte ventas por linea de producto solo</button>
+    <button mat-button>Reporte ventas por zona fecha</button>
+    <button mat-button>Reporte ventas por zona fecha solo</button>
+    <button mat-button>Reporte acumulado ventas por producto</button>
+    <button mat-button>Reporte pedidos pendientes por factura</button>
+  </mat-menu>
+  <button [matMenuTriggerFor]="menuInformesInventarios" mat-button>Informes Inventarios</button>
+  <mat-menu #menuInformesInventarios>
+    <button mat-button>Reporte lista de precios</button>
+    <button mat-button>Reporte existencia</button>
+    <button mat-button>Reporte existencias linea producto</button>
+    <button mat-button>Reporte inventario valorizado</button>
+    <button mat-button>Reporte kardex de inventario</button>
+    <button mat-button (click)="reporteAuxilioInventario()">Reporte auxiliar inventario</button>
+    <button mat-button>Reporte de rentabilidad</button>
+    <button mat-button>Reporte entradas de inventario</button>
+    <button mat-button>Reporte salida de inventario</button>
+  </mat-menu>
+
+  <button routerLink="" mat-button>Informes Clientes</button>
+  <button routerLink="" mat-button>Informes Proveedores</button>
+
+</mat-toolbar>
+
+<router-outlet></router-outlet>
 

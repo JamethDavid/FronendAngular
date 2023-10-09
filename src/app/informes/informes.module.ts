@@ -8,6 +8,7 @@ import { InformeFacturacionPosComponent } from './page/informe-facturacion-pos/i
 import { InformeClienteComponent } from './page/informe-cliente/informe-cliente.component';
 import { InformeProveedoresComponent } from './page/informe-proveedor/informe-proveedores.component';
 import { LayoutPageComponent } from './page/layout-page/layout-page.component';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { LayoutPageComponent } from './page/layout-page/layout-page.component';
   ],
   imports: [
     CommonModule,
-    InformesRoutingModule
+    InformesRoutingModule,
+    MaterialModule
   ]
 })
 export class InformesModule { }
