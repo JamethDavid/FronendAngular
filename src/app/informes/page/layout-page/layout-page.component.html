@@ -5,22 +5,14 @@
   <samp>SISEM</samp>
   <span class="example-spacer"></span>
   <button [matMenuTriggerFor]="menuInformeContable" mat-button>Informes contable</button>
-  <mat-menu color="primary" #menuInformeContable>
-    <button mat-button>Declaracion de prestaciones</button>
-    <button mat-button>Provision de impuestos</button>
-    <button mat-button>Movimientos cuentas auxiliares</button>
-    <button mat-button>Libros oficiales</button>
-    <button mat-button>Estados financieros basicos</button>
+  <mat-menu #menuInformeContable>
+    <button mat-menu-item *ngFor="let item of menuListInformeContable" [routerLink]="item.url"> {{ item.label }}
+    </button>
   </mat-menu>
   <button [matMenuTriggerFor]="menuInformesFacturacionPos" mat-button>Informes Facturacion pos</button>
   <mat-menu #menuInformesFacturacionPos >
-    <button mat-button >Reporte factura cliente</button>
-    <button mat-button>Reporte venta por linea de producto fecha</button>
-    <button mat-button>Reporte ventas por linea de producto solo</button>
-    <button mat-button>Reporte ventas por zona fecha</button>
-    <button mat-button>Reporte ventas por zona fecha solo</button>
-    <button mat-button>Reporte acumulado ventas por producto</button>
-    <button mat-button>Reporte pedidos pendientes por factura</button>
+    <button mat-menu-item *ngFor="let item of menuListInformesFacturacionPos" [routerLink]="item.url"> {{ item.label }}
+    </button>
   </mat-menu>
   <button [matMenuTriggerFor]="menuInformesInventarios" mat-button>Informes Inventarios</button>
   <mat-menu #menuInformesInventarios = matMenu>

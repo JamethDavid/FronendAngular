@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { ProductoService } from '../../services/producto.service';
 
 @Component({
@@ -7,11 +7,13 @@ import { ProductoService } from '../../services/producto.service';
   styles: [
   ]
 })
-export class LayoutPageComponent {
+export class LayoutPageComponent{
+
+
   public menuListInformeInventario =[
     {label: 'Reporte lista de precios',url:''},
     {label: 'Reporte existencias',url:''},
-    {label: 'Reporte linea producto',url:'formulario-linea-producto'},
+    {label: 'Reporte linea producto',url:'formulario-linea-producto/:nombre'},
     {label: 'Reporte inventario valorizado',url:''},
     {label: 'Reporte kardex inventario',url:''},
     {label: 'Reporte auxiliar inventario', action: () => this.reporteAuxilioInventario()},
@@ -20,7 +22,25 @@ export class LayoutPageComponent {
     {label: 'informe salida de inventario',url:''},
   ]
 
+  public menuListInformeContable=[
+    {label: 'Declaracion de prestaciones',url:''},
+    {label: 'Provision de impuestos',url:''},
+    {label: 'Movimientos cuentas auxiliares',url:''},
+    {label: 'Libros oficiales',url:''},
+    {label: 'Estados financieros basicos',url:''},
+  ]
+  public menuListInformesFacturacionPos=[
+    {label: 'Reporte factura cliente',url:''},
+    {label: 'Reporte venta por linea de producto fecha',url:''},
+    {label: 'Reporte ventas por linea de producto solo',url:''},
+    {label: 'Reporte ventas por zona fecha',url:''},
+    {label: 'Reporte ventas por zona fecha solo',url:''},
+    {label: 'Reporte acumulado ventas por producto',url:''},
+    {label: 'Reporte pedidos pendientes por factura',url:''},
+  ]
+
   constructor(private productoService:ProductoService){}
+
 
   reporteAuxilioInventario() {
     this.productoService.reporteAuxilioInventario().subscribe((data) => {
