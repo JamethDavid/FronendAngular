@@ -13,7 +13,7 @@ const routes: Routes = [
     path:'',
     component:LayoutPageComponent,
     children:[
-      {path: 'formulario-linea-producto/:nombre', component:FomularioLineaProductoComponent},
+      {path: 'formulario-linea-producto', component:FomularioLineaProductoComponent},
       {path: 'informe-contable', component:InformeContableComponent},
       {path: 'informe-facturacion-pos', component:InformeFacturacionPosComponent},
       {path: 'informe-cliente', component:InformeClienteComponent},

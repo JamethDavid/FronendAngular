@@ -11,10 +11,10 @@ export class LayoutPageComponent{
 
 
   public menuListInformeInventario =[
-    {label: 'Reporte lista de precios',url:''},
-    {label: 'Reporte existencias',url:''},
-    {label: 'Reporte linea producto',url:'formulario-linea-producto/:nombre'},
-    {label: 'Reporte inventario valorizado',url:''},
+    {label: 'Reporte lista de precios',action: () => this.reporteListaToPrecio()},
+    {label: 'Reporte existencias',action: () => this.reporteListaToExistente()},
+    {label: 'Reporte linea producto',url:'formulario-linea-producto'},
+    {label: 'Reporte inventario valorizado',action: () => this.reporteListaToInventarioValorizaso()},
     {label: 'Reporte kardex inventario',url:''},
     {label: 'Reporte auxiliar inventario', action: () => this.reporteAuxilioInventario()},
     {label: 'informe rentabilidad',url:''},
@@ -42,15 +42,35 @@ export class LayoutPageComponent{
   constructor(private productoService:ProductoService){}
 
 
+  private generarYDescargarPDF(data: any, nombreArchivo: string): void {
+    const blob = new Blob([data], { type: 'application/pdf' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = nombreArchivo;
+    link.click();
+    window.URL.revokeObjectURL(url);
+  }
+
   reporteAuxilioInventario() {
     this.productoService.reporteAuxilioInventario().subscribe((data) => {
-      const blob = new Blob([data], { type: 'application/pdf' });
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = 'reporte.pdf';
-      link.click();
-      window.URL.revokeObjectURL(url);
+      this.generarYDescargarPDF(data, 'reporte-auxilio-inventario.pdf');
+    });
+  }
+
+  reporteListaToPrecio() {
+    this.productoService.reporteListaToPrecio().subscribe((data) => {
+      this.generarYDescargarPDF(data, 'reporte-lista-precio.pdf');
+    });
+  }
+  reporteListaToExistente() {
+    this.productoService.reporteListaToExistente().subscribe((data) => {
+      this.generarYDescargarPDF(data, 'reporte-lista-existente.pdf');
+    });
+  }
+  reporteListaToInventarioValorizaso() {
+    this.productoService.reporteListaToInventarioValorizado().subscribe((data) => {
+      this.generarYDescargarPDF(data, 'reporte-lista-inventario-valorizado.pdf');
     });
   }
 

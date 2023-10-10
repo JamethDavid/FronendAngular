@@ -10,7 +10,7 @@
         <div class="grid">
           <mat-form-field class="cl-12 sm:col-6">
             <mat-label>Selecion</mat-label>
-            <mat-select required="">
+            <mat-select [(value)]="selectedNombre" >
               <mat-option *ngFor="let producto of productos"
               [value]="producto.nombre">
               {{producto.nombre}}
@@ -18,15 +18,13 @@
             </mat-select>
           </mat-form-field>
         </div>
-        <button mat-flat-button color="primary">
+        <button mat-flat-button color="primary"(click)="exportToProductoLineaPdf(selectedNombre)">
           <mat-icon>
             save
           </mat-icon>
-          consultar
+          Descargar PDF
         </button>
       </mat-card-content>
     </mat-card>
-
   </div>
-
 </div>

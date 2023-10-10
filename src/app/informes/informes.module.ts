@@ -7,6 +7,7 @@ import { InformeClienteComponent } from './page/informe-cliente/informe-cliente.
 import { InformeProveedoresComponent } from './page/informe-proveedor/informe-proveedores.component';
 import { LayoutPageComponent } from './page/layout-page/layout-page.component';
 import { MaterialModule } from '../material/material.module';
+import { FormsModule } from '@angular/forms';
 import { FomularioLineaProductoComponent } from './page/fomulario-linea-producto/fomulario-linea-producto.component';
 
 
@@ -22,7 +23,10 @@ import { FomularioLineaProductoComponent } from './page/fomulario-linea-producto
   imports: [
     CommonModule,
     InformesRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+
+
   ]
 })
 export class InformesModule { }
