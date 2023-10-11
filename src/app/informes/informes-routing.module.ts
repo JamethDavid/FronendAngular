@@ -6,6 +6,7 @@ import { InformeContableComponent } from './page/informe-contable/informe-contab
 import { InformeFacturacionPosComponent } from './page/informe-facturacion-pos/informe-facturacion-pos.component';
 import { InformeClienteComponent } from './page/informe-cliente/informe-cliente.component';
 import { InformeProveedoresComponent } from './page/informe-proveedor/informe-proveedores.component';
+import { FormularioRentabilidadComponent } from './page/formulario-rentabilidad/formulario-rentabilidad.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,9 @@ const routes: Routes = [
     path:'',
     component:LayoutPageComponent,
     children:[
+      {path: 'formulario-entrada-inventario', component:FormularioRentabilidadComponent},
+      {path: 'formulario-salida-inventario', component:FormularioRentabilidadComponent},
+      {path: 'formulario-rentabilidad', component:FormularioRentabilidadComponent},
       {path: 'formulario-linea-producto', component:FomularioLineaProductoComponent},
       {path: 'informe-contable', component:InformeContableComponent},
       {path: 'informe-facturacion-pos', component:InformeFacturacionPosComponent},

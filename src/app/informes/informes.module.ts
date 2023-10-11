@@ -9,7 +9,7 @@ import { LayoutPageComponent } from './page/layout-page/layout-page.component';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule } from '@angular/forms';
 import { FomularioLineaProductoComponent } from './page/fomulario-linea-producto/fomulario-linea-producto.component';
-
+import { FormularioRentabilidadComponent } from './page/formulario-rentabilidad/formulario-rentabilidad.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,8 @@ import { FomularioLineaProductoComponent } from './page/fomulario-linea-producto
     InformeClienteComponent,
     LayoutPageComponent,
     InformeProveedoresComponent,
-    FomularioLineaProductoComponent
+    FomularioLineaProductoComponent,
+    FormularioRentabilidadComponent
   ],
   imports: [
     CommonModule,

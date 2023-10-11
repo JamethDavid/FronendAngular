@@ -17,9 +17,9 @@ export class LayoutPageComponent{
     {label: 'Reporte inventario valorizado',action: () => this.reporteListaToInventarioValorizaso()},
     {label: 'Reporte kardex inventario',url:''},
     {label: 'Reporte auxiliar inventario', action: () => this.reporteAuxilioInventario()},
-    {label: 'informe rentabilidad',url:''},
-    {label: 'informe entrada de inventario',url:''},
-    {label: 'informe salida de inventario',url:''},
+    {label: 'informe rentabilidad',url:'formulario-rentabilidad'},
+    {label: 'informe entrada de inventario',url:'formulario-entrada-inventario'},
+    {label: 'informe salida de inventario',url:'formulario-salida-inventario'},
   ]
 
   public menuListInformeContable=[
