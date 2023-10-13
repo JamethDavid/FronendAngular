@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environments } from 'src/environments/environments';
 import { Observable } from 'rxjs';
-import { Producto } from '../interfaces/producto.interfaces';
+import { Producto } from '../interfaces/producto.interface';
+import { Kardex } from '../interfaces/kardex.interface';
 
 @Injectable({providedIn: 'root'})
 export class ProductoService {
@@ -11,8 +12,11 @@ export class ProductoService {
 
   constructor(private http: HttpClient) {  }
 
-  listaPorductoNombre():Observable<Producto[]>{
+  getListaPorductoNombre():Observable<Producto[]>{
     return this.http.get<Producto[]>(`${this.baseUrl}/linea-producto`);
+  }
+  getListaKardexVendedor():Observable<Kardex[]>{
+    return this.http.get<Kardex[]>(`${this.baseUrl}/lista-Kardex`);
   }
   reporteToLineaProductoPdf(nombre: string): Observable<Blob> {
     return this.http.get(`${this.baseUrlReporte}/lista-producto-pdf/${nombre}`, { responseType: 'blob'});
@@ -24,15 +28,15 @@ export class ProductoService {
   }
   reporteAuxilioInventario():Observable<Blob>{
     return this.http.get(`${this.baseUrlReporte}/auxilio-inventario-pdf`, { responseType: 'blob' });
-   }
-   reporteListaToPrecio():Observable<Blob>{
+  }
+  reporteListaToPrecio():Observable<Blob>{
     return this.http.get(`${this.baseUrlReporte}/lista-precio-pdf`, { responseType: 'blob' });
-   }
-   reporteListaToExistente():Observable<Blob>{
+  }
+  reporteListaToExistente():Observable<Blob>{
     return this.http.get(`${this.baseUrlReporte}/lista-existente-pdf`, { responseType: 'blob' });
-   }
-   reporteListaToInventarioValorizado():Observable<Blob>{
+  }
+  reporteListaToInventarioValorizado():Observable<Blob>{
     return this.http.get(`${this.baseUrlReporte}/lista-inventario-valorizado-pdf`, { responseType: 'blob' });
-   }
+  }
 
 }

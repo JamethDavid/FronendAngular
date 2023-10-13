@@ -7,6 +7,7 @@ import { InformeFacturacionPosComponent } from './page/informe-facturacion-pos/i
 import { InformeClienteComponent } from './page/informe-cliente/informe-cliente.component';
 import { InformeProveedoresComponent } from './page/informe-proveedor/informe-proveedores.component';
 import { FormularioRentabilidadComponent } from './page/formulario-rentabilidad/formulario-rentabilidad.component';
+import { FormularioKardexComponent } from './page/formulario-kardex/formulario-kardex.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
     path:'',
     component:LayoutPageComponent,
     children:[
+      {path: 'formulario-kardex', component:FormularioKardexComponent},
       {path: 'formulario-entrada-inventario', component:FormularioRentabilidadComponent},
       {path: 'formulario-salida-inventario', component:FormularioRentabilidadComponent},
       {path: 'formulario-rentabilidad', component:FormularioRentabilidadComponent},

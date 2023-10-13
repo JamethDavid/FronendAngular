@@ -15,7 +15,7 @@ export class LayoutPageComponent{
     {label: 'Reporte existencias',action: () => this.reporteListaToExistente()},
     {label: 'Reporte linea producto',url:'formulario-linea-producto'},
     {label: 'Reporte inventario valorizado',action: () => this.reporteListaToInventarioValorizaso()},
-    {label: 'Reporte kardex inventario',url:''},
+    {label: 'Reporte kardex inventario',url:'formulario-kardex'},
     {label: 'Reporte auxiliar inventario', action: () => this.reporteAuxilioInventario()},
     {label: 'informe rentabilidad',url:'formulario-rentabilidad'},
     {label: 'informe entrada de inventario',url:'formulario-entrada-inventario'},

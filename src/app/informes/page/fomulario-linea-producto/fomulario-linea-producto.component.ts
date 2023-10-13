@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { Producto } from '../../interfaces/producto.interfaces';
+import { Producto } from '../../interfaces/producto.interface';
 import { ProductoService } from '../../services/producto.service';
 
 
@@ -18,7 +18,7 @@ export class FomularioLineaProductoComponent implements OnInit {
     this.getLineaProducto();
   }
   getLineaProducto():void{
-    this.productoService.listaPorductoNombre()
+    this.productoService.getListaPorductoNombre()
     .subscribe(productos =>this.productos = productos);
 
   }

@@ -10,6 +10,7 @@ import { MaterialModule } from '../material/material.module';
 import { FormsModule } from '@angular/forms';
 import { FomularioLineaProductoComponent } from './page/fomulario-linea-producto/fomulario-linea-producto.component';
 import { FormularioRentabilidadComponent } from './page/formulario-rentabilidad/formulario-rentabilidad.component';
+import { FormularioKardexComponent } from './page/formulario-kardex/formulario-kardex.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FormularioRentabilidadComponent } from './page/formulario-rentabilidad/
     LayoutPageComponent,
     InformeProveedoresComponent,
     FomularioLineaProductoComponent,
-    FormularioRentabilidadComponent
+    FormularioRentabilidadComponent,
+    FormularioKardexComponent
   ],
   imports: [
     CommonModule,
