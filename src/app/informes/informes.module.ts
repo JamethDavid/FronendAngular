@@ -12,6 +12,8 @@ import { FomularioLineaProductoComponent } from './page/fomulario-linea-producto
 import { FormularioRentabilidadComponent } from './page/formulario-rentabilidad/formulario-rentabilidad.component';
 import { FormularioKardexComponent } from './page/formulario-kardex/formulario-kardex.component';
 import { DatepickerComponent } from './components/datepicker/datepicker.component';
+import { FormularioEntradaInventarioComponent } from './page/formulario-entrada-inventario/formulario-entrada-inventario.component';
+import { FormularioSalidaInventarioComponent } from './page/formulario-salida-inventario/formulario-salida-inventario.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { DatepickerComponent } from './components/datepicker/datepicker.componen
     FomularioLineaProductoComponent,
     FormularioRentabilidadComponent,
     FormularioKardexComponent,
-    DatepickerComponent
+    DatepickerComponent,
+    FormularioEntradaInventarioComponent,
+    FormularioSalidaInventarioComponent
   ],
   imports: [
     CommonModule,

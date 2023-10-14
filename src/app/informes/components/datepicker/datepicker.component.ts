@@ -22,18 +22,25 @@ export class DatepickerComponent {
   constructor(private productoService: ProductoService,
     private datePipe: DatePipe,){}
 
-    generarInformeEntradaInventario() {
+    genearInforme(tipo:string ){
       const fechaInicioFormateada = this.fechaInicio ? this.datePipe.transform(this.fechaInicio, 'yyyy-MM-ddTHH:mm:ss') : '';
       const fechaFinalFormateada = this.fechaFinal ? this.datePipe.transform(this.fechaFinal, 'yyyy-MM-ddTHH:mm:ss') : '';
 
       if (fechaInicioFormateada && fechaFinalFormateada) {
         const fechaInicioDate = new Date(fechaInicioFormateada);
         const fechaFinalDate = new Date(fechaFinalFormateada);
-
-        // Emitir un evento con las fechas
-        this.informeGenerado.emit({ fechaInicio: fechaInicioDate, fechaFinal: fechaFinalDate });
-      } else {
-        console.log('Las fechas son nulas o inválidas.');
+        const  infomre= {tipo: tipo, fechaInicio: fechaInicioDate, fechaFinal: fechaFinalDate }
+        this.informeGenerado.emit(infomre);
       }
+
     }
+    generarInformeEntradaInventario() {
+      this.genearInforme('entrada')
+    }
+    generarInformeSalidaInventario() {
+      this.genearInforme('salida')
+
   }
+
+}
+

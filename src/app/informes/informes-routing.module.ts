@@ -8,6 +8,8 @@ import { InformeClienteComponent } from './page/informe-cliente/informe-cliente.
 import { InformeProveedoresComponent } from './page/informe-proveedor/informe-proveedores.component';
 import { FormularioRentabilidadComponent } from './page/formulario-rentabilidad/formulario-rentabilidad.component';
 import { FormularioKardexComponent } from './page/formulario-kardex/formulario-kardex.component';
+import { FormularioSalidaInventarioComponent } from './page/formulario-salida-inventario/formulario-salida-inventario.component';
+import { FormularioEntradaInventarioComponent } from './page/formulario-entrada-inventario/formulario-entrada-inventario.component';
 
 
 const routes: Routes = [
@@ -16,6 +18,8 @@ const routes: Routes = [
     component:LayoutPageComponent,
     children:[
       {path: 'formulario-kardex', component:FormularioKardexComponent},
+      {path: 'formulario-salida-inventario', component:FormularioSalidaInventarioComponent},
+      {path: 'formulario-entrada-inventario', component:FormularioEntradaInventarioComponent},
       {path: 'formulario-rentabilidad', component:FormularioRentabilidadComponent},
       {path: 'formulario-linea-producto', component:FomularioLineaProductoComponent},
       {path: 'informe-contable', component:InformeContableComponent},

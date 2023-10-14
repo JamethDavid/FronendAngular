@@ -26,6 +26,11 @@ export class ProductoService {
     const fechaFinalFormato = fechaFinail.toISOString();
     return this.http.get(`${this.baseUrlReporte}/entrada-inventario-pdf/${fechaInicioFormato}/${fechaFinalFormato}`, { responseType: 'blob' });
   }
+  reporteToSalidaInventarioPdf(fechaInicio: Date, fechaFinail: Date): Observable<Blob> {
+    const fechaInicioFormato = fechaInicio.toISOString();
+    const fechaFinalFormato = fechaFinail.toISOString();
+    return this.http.get(`${this.baseUrlReporte}/salida-inventario-pdf/${fechaInicioFormato}/${fechaFinalFormato}`, { responseType: 'blob' });
+  }
   reporteAuxilioInventario():Observable<Blob>{
     return this.http.get(`${this.baseUrlReporte}/auxilio-inventario-pdf`, { responseType: 'blob' });
   }
