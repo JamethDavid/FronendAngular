@@ -51,13 +51,11 @@ export class LayoutPageComponent{
     link.click();
     window.URL.revokeObjectURL(url);
   }
-
   reporteAuxilioInventario() {
     this.productoService.reporteAuxilioInventario().subscribe((data) => {
       this.generarYDescargarPDF(data, 'reporte-auxilio-inventario.pdf');
     });
   }
-
   reporteListaToPrecio() {
     this.productoService.reporteListaToPrecio().subscribe((data) => {
       this.generarYDescargarPDF(data, 'reporte-lista-precio.pdf');

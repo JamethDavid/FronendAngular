@@ -1,0 +1,37 @@
+<h1>
+  <small>mmmmm</small>
+  </h1>
+  <mat-divider class="mb-2"></mat-divider>
+  <div class="grid">
+    <div class="col-12 sm:col-6">
+      <mat-card>
+        <mat-card-content>
+          <div class="grid">
+            <mat-form-field class="cl-12 sm:col-6">
+            <mat-label>Desde</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="fechaInicio">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="cl-12 sm:col-6">
+            <mat-label>Hasta</mat-label>
+            <input matInput [matDatepicker]="picker2" [(ngModel)]="fechaFinal">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <button mat-flat-button color="primary" (click)=" generarInformeEntradaInventario()">
+            <mat-icon>
+              save
+            </mat-icon>
+            Generar Informe
+          </button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+
+

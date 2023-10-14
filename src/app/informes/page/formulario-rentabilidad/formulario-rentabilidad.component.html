@@ -1,4 +1,4 @@
-<h1>
+<!---<h1>
 <small>{{ getTituloDinamico() }}</small>
 </h1>
 <mat-divider class="mb-2"></mat-divider>
@@ -32,3 +32,5 @@
     </mat-card>
   </div>
 </div>
+---->
+<app-datepicker [fechaInicio]="fechaInicio" [fechaFinal]="fechaFinal" (informeGenerado)="generarInforme($event)" ></app-datepicker>

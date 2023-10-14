@@ -16,8 +16,6 @@ const routes: Routes = [
     component:LayoutPageComponent,
     children:[
       {path: 'formulario-kardex', component:FormularioKardexComponent},
-      {path: 'formulario-entrada-inventario', component:FormularioRentabilidadComponent},
-      {path: 'formulario-salida-inventario', component:FormularioRentabilidadComponent},
       {path: 'formulario-rentabilidad', component:FormularioRentabilidadComponent},
       {path: 'formulario-linea-producto', component:FomularioLineaProductoComponent},
       {path: 'informe-contable', component:InformeContableComponent},

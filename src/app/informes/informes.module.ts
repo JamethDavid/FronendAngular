@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { FomularioLineaProductoComponent } from './page/fomulario-linea-producto/fomulario-linea-producto.component';
 import { FormularioRentabilidadComponent } from './page/formulario-rentabilidad/formulario-rentabilidad.component';
 import { FormularioKardexComponent } from './page/formulario-kardex/formulario-kardex.component';
+import { DatepickerComponent } from './components/datepicker/datepicker.component';
 
 @NgModule({
   declarations: [
@@ -21,15 +22,17 @@ import { FormularioKardexComponent } from './page/formulario-kardex/formulario-k
     InformeProveedoresComponent,
     FomularioLineaProductoComponent,
     FormularioRentabilidadComponent,
-    FormularioKardexComponent
+    FormularioKardexComponent,
+    DatepickerComponent
   ],
   imports: [
     CommonModule,
     InformesRoutingModule,
     MaterialModule,
     FormsModule,
-
-
+  ],
+  exports:[
+    DatepickerComponent
   ]
 })
 export class InformesModule { }

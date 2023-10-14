@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductoService } from '../../services/producto.service';
 import { DatePipe } from '@angular/common';
@@ -9,46 +9,46 @@ import { DatePipe } from '@angular/common';
   styles: [
   ]
 })
-export class FormularioRentabilidadComponent implements OnInit {
+export class FormularioRentabilidadComponent {
+
+
 
   fechaInicio: Date = new Date();
   fechaFinal: Date = new Date();
-  tituloFormulario =[
+
+
+/*  tituloFormulario =[
     {label: 'Formulario Rentabilidad',url:'formulario-rentabilidad'},
     {label: 'Formulario Entrada Inventario',url:'formulario-entrada-inventario'},
     {label: 'Formulario salida Inventario',url:'formulario-salida-inventario'},
 
   ];
-
+*/
 
   constructor(private route: ActivatedRoute,
     private datePipe: DatePipe,
     private  productoService:ProductoService ) {}
-    ngOnInit(): void {
-      this.generarInforme();
-    }
 
-  getTituloDinamico() {
-    const urlActual = this.route.snapshot.url.join('/'); // Obtiene la URL actual
+
+ /* getTituloDinamico() {
+    const urlActual = this.route.snapshot.url.join('/');
     const titulo = this.tituloFormulario.find(item => item.url === urlActual);
     return titulo ? titulo.label : 'Formulario Genérico';
   }
+*/
 
-  generarInforme() {
-    const fechaInicioFormateada = this.fechaInicio ? this.datePipe.transform(this.fechaInicio, 'yyyy-MM-ddTHH:mm:ss') : '';
-    const fechaFinalFormateada = this.fechaFinal ? this.datePipe.transform(this.fechaFinal, 'yyyy-MM-ddTHH:mm:ss') : '';
+generarInforme({ fechaInicio, fechaFinal }: { fechaInicio: Date, fechaFinal: Date }) {
+  const fechaInicioFormateada = this.datePipe.transform(fechaInicio, 'yyyy-MM-ddTHH:mm:ss');
+  const fechaFinalFormateada = this.datePipe.transform(fechaFinal, 'yyyy-MM-ddTHH:mm:ss');
 
-    if (fechaInicioFormateada && fechaFinalFormateada) {
-      const fechaInicioDate = new Date(fechaInicioFormateada);
-      const fechaFinalDate = new Date(fechaFinalFormateada);
-
-      this.productoService.reporteToEntradaInventarioPdf(fechaInicioDate, fechaFinalDate).subscribe((data:Blob) => {
-        const blob = new Blob([data], { type: 'application/pdf' });
-        const url = window.URL.createObjectURL(blob);
-        window.open(url);
-      });
-    } else {
-      console.log('Las fechas son nulas o inválidas.');
-    }
+  if (fechaInicioFormateada && fechaFinalFormateada) {
+    this.productoService.reporteToEntradaInventarioPdf(fechaInicio, fechaFinal).subscribe((data: Blob) => {
+      const blob = new Blob([data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url);
+    });
+  } else {
+    console.log('Las fechas son nulas o inválidas.');
   }
+}
 }
