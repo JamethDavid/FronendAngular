@@ -31,6 +31,11 @@ export class ProductoService {
     const fechaFinalFormato = fechaFinail.toISOString();
     return this.http.get(`${this.baseUrlReporte}/salida-inventario-pdf/${fechaInicioFormato}/${fechaFinalFormato}`, { responseType: 'blob' });
   }
+  reporteToRentabilidadPdf(fechaInicio: Date, fechaFinail: Date): Observable<Blob> {
+    const fechaInicioFormato = fechaInicio.toISOString();
+    const fechaFinalFormato = fechaFinail.toISOString();
+    return this.http.get(`${this.baseUrlReporte}/producto-rentabilidad-pdf/${fechaInicioFormato}/${fechaFinalFormato}`, { responseType: 'blob' });
+  }
   reporteAuxilioInventario():Observable<Blob>{
     return this.http.get(`${this.baseUrlReporte}/auxilio-inventario-pdf`, { responseType: 'blob' });
   }
@@ -43,5 +48,9 @@ export class ProductoService {
   reporteListaToInventarioValorizado():Observable<Blob>{
     return this.http.get(`${this.baseUrlReporte}/lista-inventario-valorizado-pdf`, { responseType: 'blob' });
   }
+  reporteListaToKardex(idVendedor:string):Observable<Blob>{
+    return this.http.get(`${this.baseUrlReporte}/reporte-kardex-pdf/${idVendedor}`, { responseType: 'blob' });
+  }
+
 
 }

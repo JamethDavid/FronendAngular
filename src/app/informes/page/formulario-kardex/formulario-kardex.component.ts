@@ -8,24 +8,8 @@ import { Kardex } from '../../interfaces/kardex.interface';
   styles: [
   ]
 })
-export class FormularioKardexComponent  implements OnInit {
-  public kardexs:Kardex[] = [];
-  public pageSize:number = 10;
-  public pageIndex:number = 0;
-  public totalItems: number = 0;
-  public displayedColumns=['referencia','nombre']
-  constructor(private productoService: ProductoService){}
+export class FormularioKardexComponent{
 
-ngOnInit(): void {
-this.getListaKardex();
-}
-  getListaKardex(): void {
-    this.productoService.getListaKardexVendedor()
-    .subscribe(data =>this.kardexs = data);
-}
-onPageChange(event: any) {
-  this.pageSize = event.pageSize;
-  this.pageIndex = event.pageIndex;
-}
+
 
 }

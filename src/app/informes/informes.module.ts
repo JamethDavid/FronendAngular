@@ -14,6 +14,7 @@ import { FormularioKardexComponent } from './page/formulario-kardex/formulario-k
 import { DatepickerComponent } from './components/datepicker/datepicker.component';
 import { FormularioEntradaInventarioComponent } from './page/formulario-entrada-inventario/formulario-entrada-inventario.component';
 import { FormularioSalidaInventarioComponent } from './page/formulario-salida-inventario/formulario-salida-inventario.component';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FormularioSalidaInventarioComponent } from './page/formulario-salida-in
     FormularioKardexComponent,
     DatepickerComponent,
     FormularioEntradaInventarioComponent,
-    FormularioSalidaInventarioComponent
+    FormularioSalidaInventarioComponent,
+    TableComponent
   ],
   imports: [
     CommonModule,

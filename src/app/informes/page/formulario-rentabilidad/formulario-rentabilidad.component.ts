@@ -15,8 +15,22 @@ export class FormularioRentabilidadComponent {
   fechaFinal: Date = new Date();
   tituloFormulario:string = 'Formulario Rentabilidad'
 
-  constructor(private route: ActivatedRoute,
-    private datePipe: DatePipe,
+  constructor(private datePipe: DatePipe,
     private  productoService:ProductoService ) {}
+
+    generarInformeRentabilidad({ fechaInicio, fechaFinal }: { fechaInicio: Date, fechaFinal: Date }) {
+      const fechaInicioFormateada = this.datePipe.transform(fechaInicio, 'yyyy-MM-ddTHH:mm:ss');
+      const fechaFinalFormateada = this.datePipe.transform(fechaFinal, 'yyyy-MM-ddTHH:mm:ss');
+
+      if (fechaInicioFormateada && fechaFinalFormateada) {
+        this.productoService.reporteToRentabilidadPdf(fechaInicio, fechaFinal).subscribe((data: Blob) => {
+          const blob = new Blob([data], { type: 'application/pdf' });
+          const url = window.URL.createObjectURL(blob);
+          window.open(url);
+        });
+      } else {
+        console.log('Las fechas son nulas o inválidas.');
+      }
+    }
 
 }

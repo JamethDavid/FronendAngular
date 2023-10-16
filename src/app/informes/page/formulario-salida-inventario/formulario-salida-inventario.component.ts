@@ -29,8 +29,6 @@ export class FormularioSalidaInventarioComponent {
           const url = window.URL.createObjectURL(blob);
           window.open(url);
         });
-      } else {
-        console.log('Las fechas son nulas o inválidas.');
       }
     }
 
