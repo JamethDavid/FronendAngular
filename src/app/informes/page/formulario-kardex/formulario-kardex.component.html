@@ -1,4 +1,5 @@
 <h1>
-
+{{titulo}}
 </h1>
-<app-table></app-table>
+<app-table [kardexs]="kardexs" [displayedColumns]="displayedColumns"
+[dataSource]="dataSource" [clickedRows]="clickedRows" [selection]="selection" (rowClick)="handleRowClick($event)"></app-table>

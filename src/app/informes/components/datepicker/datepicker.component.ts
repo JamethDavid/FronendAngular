@@ -27,8 +27,6 @@ export class DatepickerComponent {
         const fechaFinalDate = new Date(fechaFinalFormateada);
 
         this.informeGenerado.emit({ fechaInicio: fechaInicioDate, fechaFinal: fechaFinalDate });
-      } else {
-        console.log('Las fechas son nulas o inválidas.');
       }
     }
   }

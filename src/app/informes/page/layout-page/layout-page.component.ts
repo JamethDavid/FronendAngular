@@ -31,7 +31,7 @@ export class LayoutPageComponent{
   ]
   public menuListInformesFacturacionPos=[
     {label: 'Reporte factura cliente',url:''},
-    {label: 'Reporte venta por linea de producto fecha',url:''},
+    {label: 'Reporte venta por linea de producto fecha',url:'reporte-venta-linea-producto-fecha'},
     {label: 'Reporte ventas por linea de producto solo',url:''},
     {label: 'Reporte ventas por zona fecha',url:''},
     {label: 'Reporte ventas por zona fecha solo',url:''},

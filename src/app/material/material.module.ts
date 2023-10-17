@@ -19,7 +19,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   exports: [
@@ -43,6 +43,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
     MatNativeDateModule,
     MatTableModule,
     MatPaginatorModule,
+
 
   ]
 })

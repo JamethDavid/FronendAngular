@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InformesRoutingModule } from './informes-routing.module';
 import { InformeContableComponent } from './page/informe-contable/informe-contable.component';
-import { InformeFacturacionPosComponent } from './page/informe-facturacion-pos/informe-facturacion-pos.component';
 import { InformeClienteComponent } from './page/informe-cliente/informe-cliente.component';
 import { InformeProveedoresComponent } from './page/informe-proveedor/informe-proveedores.component';
 import { LayoutPageComponent } from './page/layout-page/layout-page.component';
@@ -15,11 +14,11 @@ import { DatepickerComponent } from './components/datepicker/datepicker.componen
 import { FormularioEntradaInventarioComponent } from './page/formulario-entrada-inventario/formulario-entrada-inventario.component';
 import { FormularioSalidaInventarioComponent } from './page/formulario-salida-inventario/formulario-salida-inventario.component';
 import { TableComponent } from './components/table/table.component';
+import { ReporteVentaLineaProductoFechaComponent } from './page/reporte-venta-linea-producto-fecha/reporte-venta-linea-producto-fecha.component';
 
 @NgModule({
   declarations: [
     InformeContableComponent,
-    InformeFacturacionPosComponent,
     InformeClienteComponent,
     LayoutPageComponent,
     InformeProveedoresComponent,
@@ -29,7 +28,8 @@ import { TableComponent } from './components/table/table.component';
     DatepickerComponent,
     FormularioEntradaInventarioComponent,
     FormularioSalidaInventarioComponent,
-    TableComponent
+    TableComponent,
+    ReporteVentaLineaProductoFechaComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +38,9 @@ import { TableComponent } from './components/table/table.component';
     FormsModule,
   ],
   exports:[
-    DatepickerComponent
+    DatepickerComponent,
+    TableComponent
+
   ]
 })
 export class InformesModule { }
