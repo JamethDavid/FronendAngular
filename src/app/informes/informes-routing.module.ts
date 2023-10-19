@@ -10,6 +10,7 @@ import { FormularioKardexComponent } from './page/formulario-kardex/formulario-k
 import { FormularioSalidaInventarioComponent } from './page/formulario-salida-inventario/formulario-salida-inventario.component';
 import { FormularioEntradaInventarioComponent } from './page/formulario-entrada-inventario/formulario-entrada-inventario.component';
 import { ReporteVentaLineaProductoFechaComponent} from './page/reporte-venta-linea-producto-fecha/reporte-venta-linea-producto-fecha.component';
+import { ReporteFacturaClienteComponent } from './page/reporte-factura-cliente/reporte-factura-cliente.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
     component:LayoutPageComponent,
     children:[
       {path: 'formulario-kardex', component:FormularioKardexComponent},
+      {path: 'reporte-informe-cliente', component:ReporteFacturaClienteComponent},
       {path: 'reporte-venta-linea-producto-fecha', component:ReporteVentaLineaProductoFechaComponent},
       {path: 'formulario-salida-inventario', component:FormularioSalidaInventarioComponent},
       {path: 'formulario-entrada-inventario', component:FormularioEntradaInventarioComponent},

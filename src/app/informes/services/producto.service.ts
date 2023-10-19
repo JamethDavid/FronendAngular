@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environments } from 'src/environments/environments';
 import { Observable } from 'rxjs';
 import { Producto } from '../interfaces/producto.interface';
-import { Kardex } from '../interfaces/kardex.interface';
+import { Tabla } from '../interfaces/Tabla.interface';
 
 @Injectable({providedIn: 'root'})
 export class ProductoService {
@@ -15,8 +15,11 @@ export class ProductoService {
   getListaPorductoNombre():Observable<Producto[]>{
     return this.http.get<Producto[]>(`${this.baseUrl}/linea-producto`);
   }
-  getListaKardexVendedor():Observable<Kardex[]>{
-    return this.http.get<Kardex[]>(`${this.baseUrl}/lista-Kardex`);
+  getListaKardexVendedor():Observable<Tabla[]>{
+    return this.http.get<Tabla[]>(`${this.baseUrl}/lista-kardex`);
+  }
+  getListaClienteId():Observable<Tabla[]>{
+    return this.http.get<Tabla[]>(`${this.baseUrl}/lista-cliente`);
   }
   reporteToLineaProductoPdf(nombre: string): Observable<Blob> {
     return this.http.get(`${this.baseUrlReporte}/lista-producto-pdf/${nombre}`, { responseType: 'blob'});

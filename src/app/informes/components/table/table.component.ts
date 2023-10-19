@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild, Input, EventEmitter, Output } from '@angular/core';
 import { ProductoService } from '../../services/producto.service';
-import { Kardex } from '../../interfaces/kardex.interface';
+import { Tabla } from '../../interfaces/Tabla.interface';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -12,47 +12,46 @@ import { SelectionModel } from '@angular/cdk/collections';
 })
 export class TableComponent implements OnInit, AfterViewInit {
   @Input()
-  public kardexs: Kardex[] = [];
+  public Tablas: Tabla[] = [];
   @Input()
   public displayedColumns: string[] = ['referencia', 'nombre'];
   @Input()
-  dataSource = new MatTableDataSource<Kardex>(this.kardexs);
+  dataSource = new MatTableDataSource<Tabla>(this.Tablas);
   @Input()
-  clickedRows = new Set<Kardex>();
+  clickedRows = new Set<Tabla>();
   @Input()
-  selection = new SelectionModel<Kardex>();
-
+  selection = new SelectionModel<Tabla>();
   @Output()
-  rowClick: EventEmitter<Kardex> = new EventEmitter<Kardex>();
+  rowClick: EventEmitter<Tabla> = new EventEmitter<Tabla>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private productoService: ProductoService) {}
 
   ngOnInit(): void {
+    this.getListaClientes();
     this.getListaKardex();
+
+
   }
 
   getListaKardex(): void {
     this.productoService.getListaKardexVendedor().subscribe(data => {
-      this.kardexs = data;
-      this.dataSource.data = this.kardexs;
+      this.Tablas = data;
+      this.dataSource.data = this.Tablas;
+    });
+  }
+  getListaClientes(): void {
+    this.productoService.getListaClienteId().subscribe(data => {
+      this.Tablas = data;
+      this.dataSource.data = this.Tablas;
     });
   }
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
- /* onRowClick(element : Kardex): void{
-    this.productoService.reporteListaToKardex(element.idProducto)
-    .subscribe((data:Blob) => {
-      const blob = new Blob([data], { type: 'application/pdf' });
-      const url = window.URL.createObjectURL(blob);
-      window.open(url);
-    });
-  }
-*/
-onRowClick(element : Kardex): void{
+onRowClick(element : Tabla): void{
   this.rowClick.emit(element);
 }
 }

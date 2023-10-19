@@ -30,7 +30,7 @@ export class LayoutPageComponent{
     {label: 'Estados financieros basicos',url:''},
   ]
   public menuListInformesFacturacionPos=[
-    {label: 'Reporte factura cliente',url:''},
+    {label: 'Reporte factura cliente',url:'reporte-informe-cliente'},
     {label: 'Reporte venta por linea de producto fecha',url:'reporte-venta-linea-producto-fecha'},
     {label: 'Reporte ventas por linea de producto solo',url:''},
     {label: 'Reporte ventas por zona fecha',url:''},

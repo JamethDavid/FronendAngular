@@ -15,6 +15,7 @@ import { FormularioEntradaInventarioComponent } from './page/formulario-entrada-
 import { FormularioSalidaInventarioComponent } from './page/formulario-salida-inventario/formulario-salida-inventario.component';
 import { TableComponent } from './components/table/table.component';
 import { ReporteVentaLineaProductoFechaComponent } from './page/reporte-venta-linea-producto-fecha/reporte-venta-linea-producto-fecha.component';
+import { ReporteFacturaClienteComponent } from './page/reporte-factura-cliente/reporte-factura-cliente.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ReporteVentaLineaProductoFechaComponent } from './page/reporte-venta-li
     FormularioEntradaInventarioComponent,
     FormularioSalidaInventarioComponent,
     TableComponent,
-    ReporteVentaLineaProductoFechaComponent
+    ReporteVentaLineaProductoFechaComponent,
+    ReporteFacturaClienteComponent
   ],
   imports: [
     CommonModule,
