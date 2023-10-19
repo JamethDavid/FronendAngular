@@ -15,8 +15,8 @@ export class ProductoService {
   getListaPorductoNombre():Observable<Producto[]>{
     return this.http.get<Producto[]>(`${this.baseUrl}/linea-producto`);
   }
-  getListaKardexVendedor():Observable<Tabla[]>{
-    return this.http.get<Tabla[]>(`${this.baseUrl}/lista-kardex`);
+  getListaKardexVendedor():Observable<Producto[]>{
+    return this.http.get<Producto[]>(`${this.baseUrl}/lista-kardex`);
   }
   getListaClienteId():Observable<Tabla[]>{
     return this.http.get<Tabla[]>(`${this.baseUrl}/lista-cliente`);

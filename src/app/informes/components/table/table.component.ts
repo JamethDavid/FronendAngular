@@ -1,57 +1,47 @@
-import { Component, OnInit, AfterViewInit, ViewChild, Input, EventEmitter, Output } from '@angular/core';
-import { ProductoService } from '../../services/producto.service';
+import { Component, OnChanges, AfterViewInit, ViewChild, Input, EventEmitter, Output, OnInit } from '@angular/core';
 import { Tabla } from '../../interfaces/Tabla.interface';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
+import { Producto } from '../../interfaces/producto.interface';
+import { ProductoService } from '../../services/producto.service';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styles: []
 })
-export class TableComponent implements OnInit, AfterViewInit {
+export class TableComponent implements AfterViewInit, OnInit{
   @Input()
-  public Tablas: Tabla[] = [];
+  public datos: Producto[] | Tabla[] = [];
   @Input()
   public displayedColumns: string[] = ['referencia', 'nombre'];
   @Input()
-  dataSource = new MatTableDataSource<Tabla>(this.Tablas);
+  dataSource = new MatTableDataSource< Tabla | Producto>(this.datos);
   @Input()
-  clickedRows = new Set<Tabla>();
+  clickedRows = new Set<Producto | Tabla>();
   @Input()
-  selection = new SelectionModel<Tabla>();
+  selection = new SelectionModel<Producto | Tabla>();
   @Output()
-  rowClick: EventEmitter<Tabla> = new EventEmitter<Tabla>();
+  rowClick: EventEmitter<Producto | Tabla> = new EventEmitter<Producto | Tabla>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private productoService: ProductoService) {}
-
+  constructor(private productoService: ProductoService){}
   ngOnInit(): void {
-    this.getListaClientes();
     this.getListaKardex();
-
-
   }
 
   getListaKardex(): void {
     this.productoService.getListaKardexVendedor().subscribe(data => {
-      this.Tablas = data;
-      this.dataSource.data = this.Tablas;
+      this.datos = data;
+      this.dataSource.data = this.datos;
     });
   }
-  getListaClientes(): void {
-    this.productoService.getListaClienteId().subscribe(data => {
-      this.Tablas = data;
-      this.dataSource.data = this.Tablas;
-    });
-  }
-
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
-onRowClick(element : Tabla): void{
+  onRowClick(element : Tabla): void{
   this.rowClick.emit(element);
 }
 }

@@ -1,5 +1,4 @@
 export interface Tabla{
-  idProducto:string;
-  idCliente:string;
+  idPersona:string;
   nombre:string;
 }
