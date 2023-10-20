@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProductoService } from '../../services/producto.service';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,6 +13,7 @@ import { Producto } from '../../interfaces/producto.interface';
 export class FormularioKardexComponent implements OnInit{
 
   public titulo: string = 'Formulario Kardex';
+  @Input()
   public Productos: Producto[] = [];
   public displayedColumns: string[] = ['referencia', 'nombre'];
   dataSource = new MatTableDataSource<Producto>(this.Productos);

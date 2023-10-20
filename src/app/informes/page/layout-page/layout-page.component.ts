@@ -9,7 +9,6 @@ import { ProductoService } from '../../services/producto.service';
 })
 export class LayoutPageComponent{
 
-
   public menuListInformeInventario =[
     {label: 'Reporte lista de precios',action: () => this.reporteListaToPrecio()},
     {label: 'Reporte existencias',action: () => this.reporteListaToExistente()},

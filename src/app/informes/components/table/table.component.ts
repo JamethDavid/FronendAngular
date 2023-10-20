@@ -29,11 +29,17 @@ export class TableComponent implements AfterViewInit, OnInit{
 
   constructor(private productoService: ProductoService){}
   ngOnInit(): void {
-    this.getListaKardex();
+
   }
 
   getListaKardex(): void {
     this.productoService.getListaKardexVendedor().subscribe(data => {
+      this.datos = data;
+      this.dataSource.data = this.datos;
+    });
+  }
+  getListaTabla(): void {
+    this.productoService.getListaClienteId().subscribe(data => {
       this.datos = data;
       this.dataSource.data = this.datos;
     });

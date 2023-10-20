@@ -1,4 +1,7 @@
 <h1>
-{{titulo}}
-</h1>
-<app-table [datos]="Productos"></app-table>
+  {{titulo}}
+  </h1>
+  <li *ngFor="let Producto of Productos ">
+    {{Producto.idProducto}} +"---"+ {{Producto.nombre}}
+  </li>
+

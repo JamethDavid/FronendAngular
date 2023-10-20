@@ -13,12 +13,12 @@ export class DatepickerComponent {
   fechaInicio: Date = new Date();
   @Input()
   fechaFinal: Date = new Date();
-
   @Output()
   informeGenerado:EventEmitter<{ fechaInicio: Date, fechaFinal: Date }> = new EventEmitter();
   constructor(private datePipe: DatePipe,){}
 
-    generarInformeEntradaInventario() {
+
+    generarInforme(){
       const fechaInicioFormateada = this.fechaInicio ? this.datePipe.transform(this.fechaInicio, 'yyyy-MM-ddTHH:mm:ss') : '';
       const fechaFinalFormateada = this.fechaFinal ? this.datePipe.transform(this.fechaFinal, 'yyyy-MM-ddTHH:mm:ss') : '';
 
