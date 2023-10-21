@@ -58,6 +58,9 @@ export class ProductoService {
   reporteListaToKardex(idVendedor:string):Observable<Blob>{
     return this.http.get(`${this.baseUrlReporte}/reporte-kardex-pdf/${idVendedor}`, { responseType: 'blob' });
   }
+  reporteListaToVentaZona(nombre:string):Observable<Blob>{
+    return this.http.get(`${this.baseUrlReporte}/reporte-zona-pdf/${nombre}`, { responseType: 'blob' });
+  }
 
 
 }

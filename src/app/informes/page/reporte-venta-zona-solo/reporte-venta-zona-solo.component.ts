@@ -21,8 +21,8 @@ export class ReporteVentaZonaSoloComponent {
     .subscribe(zonas =>this.zonas = zonas);
 
   }
-  exportToProductoLineaPdf(nombre: string): void {
-    this.productoService.reporteToLineaProductoPdf(nombre)
+  exportToVentaZonaPdf(nombre: string): void {
+    this.productoService.reporteListaToVentaZona(nombre)
       .subscribe((data:Blob) => {
         const blob = new Blob([data], { type: 'application/pdf' });
         const url = window.URL.createObjectURL(blob);
