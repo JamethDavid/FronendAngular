@@ -1,7 +1,4 @@
 <h1>
   {{titulo}}
   </h1>
-  <li *ngFor="let Producto of Productos ">
-    {{Producto.idProducto}} +"---"+ {{Producto.nombre}}
-  </li>
-
+<app-table-kardex [Productos]="Productos"></app-table-kardex>

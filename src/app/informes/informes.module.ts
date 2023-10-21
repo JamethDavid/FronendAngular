@@ -13,9 +13,11 @@ import { FormularioKardexComponent } from './page/formulario-kardex/formulario-k
 import { DatepickerComponent } from './components/datepicker/datepicker.component';
 import { FormularioEntradaInventarioComponent } from './page/formulario-entrada-inventario/formulario-entrada-inventario.component';
 import { FormularioSalidaInventarioComponent } from './page/formulario-salida-inventario/formulario-salida-inventario.component';
-import { TableComponent } from './components/table/table.component';
+import { TableKardexComponent } from './components/table/table-kardex.component';
 import { ReporteVentaLineaProductoFechaComponent } from './page/reporte-venta-linea-producto-fecha/reporte-venta-linea-producto-fecha.component';
 import { ReporteFacturaClienteComponent } from './page/reporte-factura-cliente/reporte-factura-cliente.component';
+import { TablaReporteFacturaClienteComponent } from './components/table/tabla-reporte-factura-cliente.component';
+import { ReporteVentaZonaSoloComponent } from './page/reporte-venta-zona-solo/reporte-venta-zona-solo.component';
 
 @NgModule({
   declarations: [
@@ -29,9 +31,11 @@ import { ReporteFacturaClienteComponent } from './page/reporte-factura-cliente/r
     DatepickerComponent,
     FormularioEntradaInventarioComponent,
     FormularioSalidaInventarioComponent,
-    TableComponent,
+    TableKardexComponent,
     ReporteVentaLineaProductoFechaComponent,
-    ReporteFacturaClienteComponent
+    ReporteFacturaClienteComponent,
+    TablaReporteFacturaClienteComponent,
+    ReporteVentaZonaSoloComponent
   ],
   imports: [
     CommonModule,
@@ -41,8 +45,6 @@ import { ReporteFacturaClienteComponent } from './page/reporte-factura-cliente/r
   ],
   exports:[
     DatepickerComponent,
-    TableComponent
-
   ]
 })
 export class InformesModule { }
