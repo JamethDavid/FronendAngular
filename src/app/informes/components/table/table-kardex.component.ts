@@ -1,5 +1,4 @@
 import { Component, OnChanges, AfterViewInit, ViewChild, Input, EventEmitter, Output, OnInit } from '@angular/core';
-import { Tabla } from '../../interfaces/Tabla.interface';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -7,47 +6,41 @@ import { Producto } from '../../interfaces/producto.interface';
 import { ProductoService } from '../../services/producto.service';
 
 @Component({
-  selector: 'app-table',
-  templateUrl: './table.component.html',
+  selector: 'app-table-kardex',
+  templateUrl: './table-kardex.component.html',
   styles: []
 })
-export class TableComponent implements AfterViewInit, OnInit{
+export class TableKardexComponent implements AfterViewInit, OnInit{
   @Input()
-  public datos: Producto[] | Tabla[] = [];
+  public Productos: Producto[]= [];
   @Input()
   public displayedColumns: string[] = ['referencia', 'nombre'];
   @Input()
-  dataSource = new MatTableDataSource< Tabla | Producto>(this.datos);
+  dataSource = new MatTableDataSource<Producto>(this.Productos);
   @Input()
-  clickedRows = new Set<Producto | Tabla>();
+  clickedRows = new Set<Producto>();
   @Input()
-  selection = new SelectionModel<Producto | Tabla>();
+  selection = new SelectionModel<Producto>();
   @Output()
-  rowClick: EventEmitter<Producto | Tabla> = new EventEmitter<Producto | Tabla>();
+  rowClick: EventEmitter<Producto> = new EventEmitter<Producto>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private productoService: ProductoService){}
   ngOnInit(): void {
+    this.getListaKardex()
 
   }
-
   getListaKardex(): void {
     this.productoService.getListaKardexVendedor().subscribe(data => {
-      this.datos = data;
-      this.dataSource.data = this.datos;
-    });
-  }
-  getListaTabla(): void {
-    this.productoService.getListaClienteId().subscribe(data => {
-      this.datos = data;
-      this.dataSource.data = this.datos;
+      this.Productos = data;
+      this.dataSource.data = this.Productos;
     });
   }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
-  onRowClick(element : Tabla): void{
+  onRowClick(element : Producto): void{
   this.rowClick.emit(element);
 }
 }

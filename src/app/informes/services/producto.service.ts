@@ -4,6 +4,7 @@ import { environments } from 'src/environments/environments';
 import { Observable } from 'rxjs';
 import { Producto } from '../interfaces/producto.interface';
 import { Tabla } from '../interfaces/Tabla.interface';
+import { Zona } from '../interfaces/zona.interface';
 
 @Injectable({providedIn: 'root'})
 export class ProductoService {
@@ -17,6 +18,9 @@ export class ProductoService {
   }
   getListaKardexVendedor():Observable<Producto[]>{
     return this.http.get<Producto[]>(`${this.baseUrl}/lista-kardex`);
+  }
+  getListaZona():Observable<Zona[]>{
+    return this.http.get<Zona[]>(`${this.baseUrl}/lista-zona`);
   }
   getListaClienteId():Observable<Tabla[]>{
     return this.http.get<Tabla[]>(`${this.baseUrl}/lista-cliente`);

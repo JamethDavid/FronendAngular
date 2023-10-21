@@ -13,7 +13,6 @@ import { Producto } from '../../interfaces/producto.interface';
 export class FormularioKardexComponent implements OnInit{
 
   public titulo: string = 'Formulario Kardex';
-  @Input()
   public Productos: Producto[] = [];
   public displayedColumns: string[] = ['referencia', 'nombre'];
   dataSource = new MatTableDataSource<Producto>(this.Productos);

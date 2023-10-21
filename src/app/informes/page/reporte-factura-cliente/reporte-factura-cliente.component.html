@@ -1,7 +1,4 @@
 <h1>
   {{titulo}}
   </h1>
-  <li *ngFor="let tabla of tablas ">
-    {{tabla.idPersona}} +"---"+ {{tabla.nombre}}
-  </li>
-
+<app-tabla-reporte-factura-cliente [tablas]="tablas"></app-tabla-reporte-factura-cliente>

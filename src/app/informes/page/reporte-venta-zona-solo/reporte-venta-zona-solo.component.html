@@ -1,0 +1,29 @@
+<h1>
+  <small>FORMULARIO LISTA DE ZONA</small>
+  </h1>
+  <mat-divider class="mb-2"></mat-divider>
+  <div class="grid">
+    <div class="col-12 sm:col-6">
+      <mat-card>
+        <mat-card-content>
+          <div class="grid">
+            <mat-form-field class="cl-12 sm:col-6">
+              <mat-label>Selecion</mat-label>
+              <mat-select [(value)]="selectedNombre" >
+                <mat-option *ngFor="let zona of zonas"
+                [value]="zona.zonaNombre">
+                {{zona.zonaNombre}}
+              </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <button mat-flat-button color="primary"(click)="exportToProductoLineaPdf(selectedNombre)">
+            <mat-icon>
+              save
+            </mat-icon>
+            Descargar PDF
+          </button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
