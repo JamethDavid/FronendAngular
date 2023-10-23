@@ -4,6 +4,7 @@ import { Tabla } from '../../interfaces/Tabla.interface';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { ProductoService } from '../../services/producto.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-tabla-reporte-factura-cliente',
@@ -25,9 +26,13 @@ export class TablaReporteFacturaClienteComponent {
   @Output()
   rowClick: EventEmitter<Tabla> = new EventEmitter<Tabla>();
 
+  fechaInicio: Date = new Date();
+  fechaFinal: Date = new Date();
+
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private productoService: ProductoService){}
+  constructor(private productoService: ProductoService,private datePipe: DatePipe){}
   ngOnInit(): void {
     this.getListaTabla()
   }
@@ -44,4 +49,18 @@ export class TablaReporteFacturaClienteComponent {
   onRowClick(element : Tabla): void{
   this.rowClick.emit(element);
 }
+
+generarInformeCliente({ fechaInicio, fechaFinal }: { fechaInicio: Date, fechaFinal: Date }) {
+  const fechaInicioFormateada = this.datePipe.transform(fechaInicio, 'yyyy-MM-ddTHH:mm:ss');
+  const fechaFinalFormateada = this.datePipe.transform(fechaFinal, 'yyyy-MM-ddTHH:mm:ss');
+
+  if (fechaInicioFormateada && fechaFinalFormateada) {
+    this.productoService.reporteToSalidaInventarioPdf(fechaInicio, fechaFinal).subscribe((data: Blob) => {
+      const blob = new Blob([data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url);
+    });
+  }
+}
+
 }

@@ -61,6 +61,11 @@ export class ProductoService {
   reporteListaToVentaZona(nombre:string):Observable<Blob>{
     return this.http.get(`${this.baseUrlReporte}/reporte-zona-pdf/${nombre}`, { responseType: 'blob' });
   }
+  reporteListaToFacturaCliente(fechaInicio: Date, fechaFinail: Date, idPersona: string): Observable<Blob> {
+    const fechaInicioFormato = fechaInicio.toISOString();
+    const fechaFinalFormato = fechaFinail.toISOString();
+    return this.http.get(`${this.baseUrlReporte}/reporte-cliente-pdf/${fechaInicioFormato}/${fechaFinalFormato}/${idPersona}`, { responseType: 'blob' });
+  }
 
 
 }

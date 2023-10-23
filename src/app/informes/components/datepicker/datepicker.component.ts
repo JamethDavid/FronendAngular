@@ -15,7 +15,7 @@ export class DatepickerComponent {
   fechaFinal: Date = new Date();
   @Output()
   informeGenerado:EventEmitter<{ fechaInicio: Date, fechaFinal: Date }> = new EventEmitter();
-  constructor(private datePipe: DatePipe,){}
+  constructor(private datePipe: DatePipe){}
 
 
     generarInforme(){
