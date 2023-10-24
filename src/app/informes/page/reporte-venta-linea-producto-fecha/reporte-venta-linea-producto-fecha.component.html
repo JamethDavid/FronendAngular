@@ -1,4 +1,4 @@
 <h1>
-  Reportes ventas por linea de producto fecha
+  {{tituloFormulario}}
 </h1>
-<app-datepicker></app-datepicker>
+<app-datepicker [fechaInicio]="fechaInicio" [fechaFinal]="fechaFinal" (informeGenerado)="generarInformeLineaVentaProducto($event)"></app-datepicker>

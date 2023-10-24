@@ -66,6 +66,11 @@ export class ProductoService {
     const fechaFinalFormato = fechaFinail.toISOString();
     return this.http.get(`${this.baseUrlReporte}/reporte-cliente-pdf/${fechaInicioFormato}/${fechaFinalFormato}/${idPersona}`, { responseType: 'blob' });
   }
+  reporteListaToVentaLineaProductoFecha(fechaInicio: Date, fechaFinail: Date): Observable<Blob> {
+    const fechaInicioFormato = fechaInicio.toISOString();
+    const fechaFinalFormato = fechaFinail.toISOString();
+    return this.http.get(`${this.baseUrlReporte}/reporte-venta-linea-producto-pdf/${fechaInicioFormato}/${fechaFinalFormato}`, { responseType: 'blob' });
+  }
 
 
 }
