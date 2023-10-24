@@ -1,4 +1,4 @@
 <h1>
   {{titulo}}
   </h1>
-<app-tabla-reporte-factura-cliente [tablas]="tablas"></app-tabla-reporte-factura-cliente>
+<app-tabla-reporte-factura-cliente [tablas]="tablas" (informeGenerado)="generarInformeSalidaInventario($event.fechaInicio, $event.fechaFinal, $event.tablas)"></app-tabla-reporte-factura-cliente>

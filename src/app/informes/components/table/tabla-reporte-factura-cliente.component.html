@@ -11,26 +11,41 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr
       mat-row
-      (click)="onRowClick(row)"
+      (click)="generarInforme(row)"
       [class.demo-row-is-clicked]="selection.isSelected(row.idPersona)"
       *matRowDef="let row; columns: displayedColumns;"
   ></tr>
 </table>
 <mat-paginator [pageSizeOptions]="[5, 10, 20]"showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator>
 </div>
-<app-datepicker></app-datepicker>
-<div>
-  <h3>
-    Click Log
-  </h3>
+<mat-divider class="mb-2"></mat-divider>
+<div class="grid">
+  <div class="col-12 sm:col-6">
+    <mat-card>
+      <mat-card-content>
+        <div class="grid">
+          <mat-form-field class="cl-12 sm:col-6">
+          <mat-label>Desde</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]="fechaInicio">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field class="cl-12 sm:col-6">
+          <mat-label>Hasta</mat-label>
+          <input matInput [matDatepicker]="picker2" [(ngModel)]="fechaFinal">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <button mat-flat-button color="primary">
+          <mat-icon>
+            save
+          </mat-icon>
+          Generar Informe
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
-
-<div *ngIf="!clickedRows.size">
-  Clicked rows will be logged here
-</div>
-
-<ul>
-  <li *ngFor="let clickedRow of clickedRows">
-    Clicked on {{clickedRow.idPersona}}
-  </li>
-</ul>

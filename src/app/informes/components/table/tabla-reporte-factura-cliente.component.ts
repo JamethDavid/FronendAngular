@@ -23,11 +23,17 @@ export class TablaReporteFacturaClienteComponent {
   clickedRows = new Set<Tabla>();
   @Input()
   selection = new SelectionModel<Tabla>();
+  @Input()
+  fechaInicio: Date = new Date();
+  @Input()
+  fechaFinal: Date = new Date();
+  @Input()
+  select: string ="";
   @Output()
   rowClick: EventEmitter<Tabla> = new EventEmitter<Tabla>();
+  @Output()
+  informeGenerado:EventEmitter<{ fechaInicio: Date, fechaFinal: Date, tablas:Tabla }> = new EventEmitter();
 
-  fechaInicio: Date = new Date();
-  fechaFinal: Date = new Date();
 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -50,16 +56,15 @@ export class TablaReporteFacturaClienteComponent {
   this.rowClick.emit(element);
 }
 
-generarInformeCliente({ fechaInicio, fechaFinal }: { fechaInicio: Date, fechaFinal: Date }) {
-  const fechaInicioFormateada = this.datePipe.transform(fechaInicio, 'yyyy-MM-ddTHH:mm:ss');
-  const fechaFinalFormateada = this.datePipe.transform(fechaFinal, 'yyyy-MM-ddTHH:mm:ss');
+generarInforme(element : Tabla){
+  const fechaInicioFormateada = this.fechaInicio ? this.datePipe.transform(this.fechaInicio, 'yyyy-MM-ddTHH:mm:ss') : '';
+  const fechaFinalFormateada = this.fechaFinal ? this.datePipe.transform(this.fechaFinal, 'yyyy-MM-ddTHH:mm:ss') : '';
 
   if (fechaInicioFormateada && fechaFinalFormateada) {
-    this.productoService.reporteToSalidaInventarioPdf(fechaInicio, fechaFinal).subscribe((data: Blob) => {
-      const blob = new Blob([data], { type: 'application/pdf' });
-      const url = window.URL.createObjectURL(blob);
-      window.open(url);
-    });
+    const fechaInicioDate = new Date(fechaInicioFormateada);
+    const fechaFinalDate = new Date(fechaFinalFormateada);
+
+    this.informeGenerado.emit({ fechaInicio: fechaInicioDate, fechaFinal: fechaFinalDate, tablas:element });
   }
 }
 
