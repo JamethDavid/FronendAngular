@@ -40,5 +40,4 @@ export class FormularioKardexComponent implements OnInit{
       window.open(url);
     });
   }
-
 }

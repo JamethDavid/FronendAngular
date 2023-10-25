@@ -32,7 +32,7 @@ export class ReporteFacturaClienteComponent implements OnInit {
       this.dataSource.data = this.tablas;
     });
   }
-    generarInformeSalidaInventario(fechaInicio: Date, fechaFinal: Date,element:Tabla) {
+    generarInforme(fechaInicio: Date, fechaFinal: Date,element:Tabla) {
       const fechaInicioFormateada = this.datePipe.transform(fechaInicio, 'yyyy-MM-ddTHH:mm:ss');
       const fechaFinalFormateada = this.datePipe.transform(fechaFinal, 'yyyy-MM-ddTHH:mm:ss');
       if (fechaInicioFormateada && fechaFinalFormateada) {
@@ -43,8 +43,5 @@ export class ReporteFacturaClienteComponent implements OnInit {
         });
       }
     }
-
-
-
 
 }
