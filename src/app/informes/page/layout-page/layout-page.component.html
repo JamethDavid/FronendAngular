@@ -11,7 +11,7 @@
   </mat-menu>
   <button [matMenuTriggerFor]="menuInformesFacturacionPos" mat-button>Informes Facturacion pos</button>
   <mat-menu #menuInformesFacturacionPos >
-    <button mat-menu-item *ngFor="let item of menuListInformesFacturacionPos" [routerLink]="item.url"> {{ item.label }}
+    <button mat-menu-item *ngFor="let item of menuListInformesFacturacionPos" [routerLink]="item.url" (click)="item.action && item.action()"> {{ item.label }}
     </button>
   </mat-menu>
   <button [matMenuTriggerFor]="menuInformesInventarios" mat-button>Informes Inventarios</button>

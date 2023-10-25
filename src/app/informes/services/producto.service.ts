@@ -28,23 +28,11 @@ export class ProductoService {
   reporteToLineaProductoPdf(nombre: string): Observable<Blob> {
     return this.http.get(`${this.baseUrlReporte}/lista-producto-pdf/${nombre}`, { responseType: 'blob'});
   }
-  reporteToEntradaInventarioPdf(fechaInicio: Date, fechaFinail: Date): Observable<Blob> {
-    const fechaInicioFormato = fechaInicio.toISOString();
-    const fechaFinalFormato = fechaFinail.toISOString();
-    return this.http.get(`${this.baseUrlReporte}/entrada-inventario-pdf/${fechaInicioFormato}/${fechaFinalFormato}`, { responseType: 'blob' });
-  }
-  reporteToSalidaInventarioPdf(fechaInicio: Date, fechaFinail: Date): Observable<Blob> {
-    const fechaInicioFormato = fechaInicio.toISOString();
-    const fechaFinalFormato = fechaFinail.toISOString();
-    return this.http.get(`${this.baseUrlReporte}/salida-inventario-pdf/${fechaInicioFormato}/${fechaFinalFormato}`, { responseType: 'blob' });
-  }
-  reporteToRentabilidadPdf(fechaInicio: Date, fechaFinail: Date): Observable<Blob> {
-    const fechaInicioFormato = fechaInicio.toISOString();
-    const fechaFinalFormato = fechaFinail.toISOString();
-    return this.http.get(`${this.baseUrlReporte}/producto-rentabilidad-pdf/${fechaInicioFormato}/${fechaFinalFormato}`, { responseType: 'blob' });
-  }
   reporteAuxilioInventario():Observable<Blob>{
     return this.http.get(`${this.baseUrlReporte}/auxilio-inventario-pdf`, { responseType: 'blob' });
+  }
+  reporteVentaZonaFecha():Observable<Blob>{
+    return this.http.get(`${this.baseUrlReporte}/reporte-zona-venta-fecha-pdf`, { responseType: 'blob' });
   }
   reporteListaToPrecio():Observable<Blob>{
     return this.http.get(`${this.baseUrlReporte}/lista-precio-pdf`, { responseType: 'blob' });
@@ -70,6 +58,21 @@ export class ProductoService {
     const fechaInicioFormato = fechaInicio.toISOString();
     const fechaFinalFormato = fechaFinail.toISOString();
     return this.http.get(`${this.baseUrlReporte}/reporte-venta-linea-producto-pdf/${fechaInicioFormato}/${fechaFinalFormato}`, { responseType: 'blob' });
+  }
+  reporteToEntradaInventarioPdf(fechaInicio: Date, fechaFinail: Date): Observable<Blob> {
+    const fechaInicioFormato = fechaInicio.toISOString();
+    const fechaFinalFormato = fechaFinail.toISOString();
+    return this.http.get(`${this.baseUrlReporte}/entrada-inventario-pdf/${fechaInicioFormato}/${fechaFinalFormato}`, { responseType: 'blob' });
+  }
+  reporteToSalidaInventarioPdf(fechaInicio: Date, fechaFinail: Date): Observable<Blob> {
+    const fechaInicioFormato = fechaInicio.toISOString();
+    const fechaFinalFormato = fechaFinail.toISOString();
+    return this.http.get(`${this.baseUrlReporte}/salida-inventario-pdf/${fechaInicioFormato}/${fechaFinalFormato}`, { responseType: 'blob' });
+  }
+  reporteToRentabilidadPdf(fechaInicio: Date, fechaFinail: Date): Observable<Blob> {
+    const fechaInicioFormato = fechaInicio.toISOString();
+    const fechaFinalFormato = fechaFinail.toISOString();
+    return this.http.get(`${this.baseUrlReporte}/producto-rentabilidad-pdf/${fechaInicioFormato}/${fechaFinalFormato}`, { responseType: 'blob' });
   }
 
 
