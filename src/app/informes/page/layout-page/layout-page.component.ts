@@ -34,7 +34,7 @@ export class LayoutPageComponent{
     {label: 'Reporte ventas por linea de producto solo',url:''},
     {label: 'Reporte ventas por zona fecha',action: () => this.reporteVentaZonaFecha()},
     {label: 'Reporte ventas por zona fecha solo',url:'reporte-ventas-zona-solo'},
-    {label: 'Reporte acumulado ventas por producto',url:''},
+    {label: 'Reporte acumulado ventas por producto',url:'formulario-reporte-acomulado-venta-producto'},
     {label: 'Reporte pedidos pendientes por factura',url:''},
   ]
 

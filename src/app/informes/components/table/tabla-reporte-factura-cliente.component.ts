@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Tabla } from '../../interfaces/Tabla.interface';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -12,7 +12,7 @@ import { DatePipe } from '@angular/common';
   styles: [
   ]
 })
-export class TablaReporteFacturaClienteComponent {
+export class TablaReporteFacturaClienteComponent implements OnInit {
   @Input()
   public tablas: Tabla[] = [];
   @Input()
@@ -34,8 +34,6 @@ export class TablaReporteFacturaClienteComponent {
   @Output()
   informeGenerado:EventEmitter<{ fechaInicio: Date, fechaFinal: Date, tablas:Tabla }> = new EventEmitter();
 
-
-
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private productoService: ProductoService,private datePipe: DatePipe){}
@@ -52,10 +50,6 @@ export class TablaReporteFacturaClienteComponent {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
-  onRowClick(element : Tabla): void{
-  this.rowClick.emit(element);
-}
-
 generarInforme(element : Tabla){
   const fechaInicioFormateada = this.fechaInicio ? this.datePipe.transform(this.fechaInicio, 'yyyy-MM-ddTHH:mm:ss') : '';
   const fechaFinalFormateada = this.fechaFinal ? this.datePipe.transform(this.fechaFinal, 'yyyy-MM-ddTHH:mm:ss') : '';
@@ -63,9 +57,8 @@ generarInforme(element : Tabla){
   if (fechaInicioFormateada && fechaFinalFormateada) {
     const fechaInicioDate = new Date(fechaInicioFormateada);
     const fechaFinalDate = new Date(fechaFinalFormateada);
-
     this.informeGenerado.emit({ fechaInicio: fechaInicioDate, fechaFinal: fechaFinalDate, tablas:element });
+    }
   }
-}
 
 }

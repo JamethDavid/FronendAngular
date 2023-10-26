@@ -1,1 +1,51 @@
-<p>tabla-reporte-acomulado-venta-producto works!</p>
+<div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+  <ng-container matColumnDef="referencia">
+    <th mat-header-cell *matHeaderCellDef>Referencia</th>
+    <td mat-cell *matCellDef="let element">{{element.idProducto}}</td>
+  </ng-container>
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+    <td mat-cell *matCellDef="let element">{{element.nombre}}</td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr
+      mat-row
+      (click)="generarInforme(row)"
+      [class.demo-row-is-clicked]="selection.isSelected(row.idProducto)"
+      *matRowDef="let row; columns: displayedColumns;"
+  ></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]"showFirstLastButtons aria-label="Select page of periodic elements"></mat-paginator>
+</div>
+<mat-divider class="mb-2"></mat-divider>
+<div class="grid">
+  <div class="col-12 sm:col-6">
+    <mat-card>
+      <mat-card-content>
+        <div class="grid">
+          <mat-form-field class="cl-12 sm:col-6">
+          <mat-label>Desde</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]="fechaInicio">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field class="cl-12 sm:col-6">
+          <mat-label>Hasta</mat-label>
+          <input matInput [matDatepicker]="picker2" [(ngModel)]="fechaFinal">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <button mat-flat-button color="primary">
+          <mat-icon>
+            save
+          </mat-icon>
+          Generar Informe
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

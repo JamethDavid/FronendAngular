@@ -43,5 +43,4 @@ export class ReporteFacturaClienteComponent implements OnInit {
         });
       }
     }
-
 }
