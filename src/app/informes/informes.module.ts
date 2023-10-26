@@ -18,6 +18,7 @@ import { ReporteVentaLineaProductoFechaComponent } from './page/reporte-venta-li
 import { ReporteFacturaClienteComponent } from './page/reporte-factura-cliente/reporte-factura-cliente.component';
 import { TablaReporteFacturaClienteComponent } from './components/table/tabla-reporte-factura-cliente.component';
 import { ReporteVentaZonaSoloComponent } from './page/reporte-venta-zona-solo/reporte-venta-zona-solo.component';
+import { TablaReporteAcomuladoVentaProductoComponent } from './components/table/tabla-reporte-acomulado-venta-producto/tabla-reporte-acomulado-venta-producto.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ReporteVentaZonaSoloComponent } from './page/reporte-venta-zona-solo/re
     ReporteVentaLineaProductoFechaComponent,
     ReporteFacturaClienteComponent,
     TablaReporteFacturaClienteComponent,
-    ReporteVentaZonaSoloComponent
+    ReporteVentaZonaSoloComponent,
+    TablaReporteAcomuladoVentaProductoComponent
   ],
   imports: [
     CommonModule,
