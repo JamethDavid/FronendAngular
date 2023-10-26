@@ -35,7 +35,7 @@ export class LayoutPageComponent{
     {label: 'Reporte ventas por zona fecha',action: () => this.reporteVentaZonaFecha()},
     {label: 'Reporte ventas por zona fecha solo',url:'reporte-ventas-zona-solo'},
     {label: 'Reporte acumulado ventas por producto',url:'formulario-reporte-acomulado-venta-producto'},
-    {label: 'Reporte pedidos pendientes por factura',url:''},
+    {label: 'Reporte pedidos pendientes por factura',action:() => this.reportePedidoPendiente()},
   ]
 
   constructor(private productoService:ProductoService){}
@@ -73,6 +73,11 @@ export class LayoutPageComponent{
   reporteVentaZonaFecha() {
     this.productoService.reporteVentaZonaFecha().subscribe((data) => {
       this.generarYDescargarPDF(data, 'reporte-venta-zona-fecha.pdf');
+    });
+  }
+  reportePedidoPendiente() {
+    this.productoService.reportePedidoPendiente().subscribe((data) => {
+      this.generarYDescargarPDF(data, 'reporte-pedido-pendiente.pdf');
     });
   }
 

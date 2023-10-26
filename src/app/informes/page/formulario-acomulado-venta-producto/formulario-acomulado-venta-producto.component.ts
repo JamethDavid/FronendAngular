@@ -1,18 +1,19 @@
-import { SelectionModel } from '@angular/cdk/collections';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Producto } from '../../interfaces/producto.interface';
 import { MatTableDataSource } from '@angular/material/table';
+import { SelectionModel } from '@angular/cdk/collections';
 import { ProductoService } from '../../services/producto.service';
 import { DatePipe } from '@angular/common';
-import { Producto } from '../../interfaces/producto.interface';
 
 @Component({
-  selector: 'app-formulario-reporte-acomulado-venta-producto',
-  templateUrl: './formulario-reporte-acomulado-venta-producto.component.html',
+  selector: 'app-formulario-acomulado-venta-producto',
+  templateUrl: './formulario-acomulado-venta-producto.component.html',
   styles: [
   ]
 })
-export class FormularioReporteAcomuladoVentaProductoComponent implements OnInit{
-  public titulo: string = 'Formulario Reporte Cliente';
+export class FormularioAcomuladoVentaProductoComponent {
+
+  public titulo: string = 'Formulario Reporte Acomulado Venta Producto';
 
   public productos: Producto[] = [];
   public displayedColumns: string[] = ['referencia', 'nombre'];
@@ -24,9 +25,9 @@ export class FormularioReporteAcomuladoVentaProductoComponent implements OnInit{
   constructor(private productoService: ProductoService,private datePipe: DatePipe){}
   ngOnInit(): void {
 
-    this.getListaProducto();
+    this.getListaCliente();
   }
-  getListaProducto(): void {
+  getListaCliente(): void {
     this.productoService.getListaKardexVendedor().subscribe(data => {
       this.productos = data;
       this.dataSource.data = this.productos;
@@ -36,7 +37,7 @@ export class FormularioReporteAcomuladoVentaProductoComponent implements OnInit{
       const fechaInicioFormateada = this.datePipe.transform(fechaInicio, 'yyyy-MM-ddTHH:mm:ss');
       const fechaFinalFormateada = this.datePipe.transform(fechaFinal, 'yyyy-MM-ddTHH:mm:ss');
       if (fechaInicioFormateada && fechaFinalFormateada) {
-        this.productoService.reporteListaToAcomuladoVentaProducto(fechaInicio, fechaFinal,element.idProducto).subscribe((data: Blob) => {
+        this.productoService.reporteListaToFacturaAcomulado(fechaInicio, fechaFinal,element.idProducto).subscribe((data: Blob) => {
           const blob = new Blob([data], { type: 'application/pdf' });
           const url = window.URL.createObjectURL(blob);
           window.open(url);

@@ -25,11 +25,15 @@ export class ProductoService {
   getListaClienteId():Observable<Tabla[]>{
     return this.http.get<Tabla[]>(`${this.baseUrl}/lista-cliente`);
   }
+
   reporteToLineaProductoPdf(nombre: string): Observable<Blob> {
     return this.http.get(`${this.baseUrlReporte}/lista-producto-pdf/${nombre}`, { responseType: 'blob'});
   }
   reporteAuxilioInventario():Observable<Blob>{
     return this.http.get(`${this.baseUrlReporte}/auxilio-inventario-pdf`, { responseType: 'blob' });
+  }
+  reportePedidoPendiente():Observable<Blob>{
+    return this.http.get(`${this.baseUrlReporte}/reporte-pedido-pendiente-pdf`, { responseType: 'blob' });
   }
   reporteVentaZonaFecha():Observable<Blob>{
     return this.http.get(`${this.baseUrlReporte}/reporte-zona-venta-fecha-pdf`, { responseType: 'blob' });
@@ -54,7 +58,7 @@ export class ProductoService {
     const fechaFinalFormato = fechaFinail.toISOString();
     return this.http.get(`${this.baseUrlReporte}/reporte-cliente-pdf/${fechaInicioFormato}/${fechaFinalFormato}/${idPersona}`, { responseType: 'blob' });
   }
-  reporteListaToAcomuladoVentaProducto(fechaInicio: Date, fechaFinail: Date, idProducto: string): Observable<Blob> {
+  reporteListaToFacturaAcomulado(fechaInicio: Date, fechaFinail: Date, idProducto: string): Observable<Blob> {
     const fechaInicioFormato = fechaInicio.toISOString();
     const fechaFinalFormato = fechaFinail.toISOString();
     return this.http.get(`${this.baseUrlReporte}/reporte-acomulado-venta-producto-pdf/${fechaInicioFormato}/${fechaFinalFormato}/${idProducto}`, { responseType: 'blob' });

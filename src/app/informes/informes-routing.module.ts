@@ -12,13 +12,13 @@ import { FormularioEntradaInventarioComponent } from './page/formulario-entrada-
 import { ReporteVentaLineaProductoFechaComponent} from './page/reporte-venta-linea-producto-fecha/reporte-venta-linea-producto-fecha.component';
 import { ReporteFacturaClienteComponent } from './page/reporte-factura-cliente/reporte-factura-cliente.component';
 import { ReporteVentaZonaSoloComponent } from './page/reporte-venta-zona-solo/reporte-venta-zona-solo.component';
-import { FormularioReporteAcomuladoVentaProductoComponent } from './page/formulario-reporte-acomulado-venta-producto/formulario-reporte-acomulado-venta-producto.component';
+import { FormularioAcomuladoVentaProductoComponent } from './page/formulario-acomulado-venta-producto/formulario-acomulado-venta-producto.component';
 const routes: Routes = [
   {
     path:'',
     component:LayoutPageComponent,
     children:[
-      {path: 'formulario-reporte-acomulado-venta-producto', component:FormularioReporteAcomuladoVentaProductoComponent},
+      {path: 'formulario-reporte-acomulado-venta-producto', component:FormularioAcomuladoVentaProductoComponent},
       {path: 'formulario-kardex', component:FormularioKardexComponent},
       {path: 'reporte-informe-cliente', component:ReporteFacturaClienteComponent},
       {path: 'reporte-ventas-zona-solo', component:ReporteVentaZonaSoloComponent},
