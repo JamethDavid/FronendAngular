@@ -1,5 +1,8 @@
-export interface UserModel {
-usuario: string;
-password: string;
-rol_idrol: number;
+export class UserModel {
+public usuario: string;
+public password: string;
+constructor(usuario:string,password:string){
+  this.usuario = usuario;
+  this.password= password;
+}
 }

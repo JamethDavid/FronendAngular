@@ -1,0 +1,16 @@
+<div class="flex flex-column" [formGroup]="loginForm">
+  <samp class="text-lg mb-4">Login</samp>
+    <mat-form-field >
+      <mat-label>Usuario</mat-label>
+      <input formControlName ="usuario" type="usuario" matInput placeholder="Nombre de usario">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Contraseña</mat-label>
+      <input formControlName ="password" type="password" matInput placeholder="Contraseña">
+    </mat-form-field>
+
+    <button mat-button mat-flat-button color="primary" (click)="login()">
+      <mat-icon>save</mat-icon>
+      Ingresar
+    </button>
+</div>

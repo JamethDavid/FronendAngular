@@ -20,8 +20,10 @@ import { TablaReporteFacturaClienteComponent } from './components/table/tabla-re
 import { ReporteVentaZonaSoloComponent } from './page/reporte-venta-zona-solo/reporte-venta-zona-solo.component';
 import { TablaReporteAcomuladoVentaProductoComponent } from './components/table/tabla-reporte-acomulado-venta-producto.component';
 import { FormularioAcomuladoVentaProductoComponent } from './page/formulario-acomulado-venta-producto/formulario-acomulado-venta-producto.component';
+import { LoginService } from '../auth/pages/services/login.service';
 
 @NgModule({
+  providers: [LoginService],
   declarations: [
     InformeContableComponent,
     InformeClienteComponent,

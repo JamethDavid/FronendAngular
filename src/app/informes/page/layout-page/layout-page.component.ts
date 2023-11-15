@@ -1,5 +1,6 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ProductoService } from '../../services/producto.service';
+import { LoginService } from '../../../auth/pages/services/login.service';
 
 @Component({
   selector: 'app-layout-page',
@@ -7,7 +8,8 @@ import { ProductoService } from '../../services/producto.service';
   styles: [
   ]
 })
-export class LayoutPageComponent{
+export class LayoutPageComponent implements OnInit{
+  usuario:string =""
 
   public menuListInformeInventario =[
     {label: 'Reporte lista de precios',action: () => this.reporteListaToPrecio()},
@@ -38,7 +40,9 @@ export class LayoutPageComponent{
     {label: 'Reporte pedidos pendientes por factura',action:() => this.reportePedidoPendiente()},
   ]
 
-  constructor(private productoService:ProductoService){}
+  constructor(private productoService:ProductoService,private loginService:LoginService){}
+  ngOnInit(): void {
+  }
 
 
   private generarYDescargarPDF(data: any, nombreArchivo: string): void {

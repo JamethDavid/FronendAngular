@@ -41,7 +41,7 @@ export class LoginService {
    * @param userModel
    */
   public iniciarSesion(userModel: UserModel): Observable<RestResponse> {
-    return this.http.post<RestResponse>(this.baseUrl + 'login', JSON.stringify(userModel));
+    return this.http.post<RestResponse>(this.baseUrl + '/login', JSON.stringify(userModel));
   }
 
  /**
