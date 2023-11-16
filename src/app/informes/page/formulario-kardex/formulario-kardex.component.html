@@ -1,5 +1,5 @@
 <h1>
   {{titulo}}
   </h1>
-<app-table-kardex [Productos]="Productos" (rowClick)="handleRowClick($event)"></app-table-kardex>
+<app-table-kardex [Productos]="Productos" [token]="token" (rowClick)="handleRowClick($event)"></app-table-kardex>
 

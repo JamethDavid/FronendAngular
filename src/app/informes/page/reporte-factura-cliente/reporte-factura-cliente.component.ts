@@ -13,6 +13,7 @@ import { DatePipe } from '@angular/common';
 export class ReporteFacturaClienteComponent implements OnInit {
 
   public titulo: string = 'Formulario Reporte Cliente';
+  public token:string='';
 
   public tablas: Tabla[] = [];
   public displayedColumns: string[] = ['referencia', 'nombre'];
@@ -27,7 +28,8 @@ export class ReporteFacturaClienteComponent implements OnInit {
     this.getListaCliente();
   }
   getListaCliente(): void {
-    this.productoService.getListaClienteId().subscribe(data => {
+    this.token = localStorage.getItem('token') ?? 'deful';
+    this.productoService.getListaClienteId(this.token).subscribe(data => {
       this.tablas = data;
       this.dataSource.data = this.tablas;
     });
@@ -35,8 +37,9 @@ export class ReporteFacturaClienteComponent implements OnInit {
     generarInforme(fechaInicio: Date, fechaFinal: Date,element:Tabla) {
       const fechaInicioFormateada = this.datePipe.transform(fechaInicio, 'yyyy-MM-ddTHH:mm:ss');
       const fechaFinalFormateada = this.datePipe.transform(fechaFinal, 'yyyy-MM-ddTHH:mm:ss');
+      this.token = localStorage.getItem('token') ?? 'deful';
       if (fechaInicioFormateada && fechaFinalFormateada) {
-        this.productoService.reporteListaToFacturaCliente(fechaInicio, fechaFinal,element.idPersona).subscribe((data: Blob) => {
+        this.productoService.reporteListaToFacturaCliente(fechaInicio, fechaFinal,element.idPersona,this.token).subscribe((data: Blob) => {
           const blob = new Blob([data], { type: 'application/pdf' });
           const url = window.URL.createObjectURL(blob);
           window.open(url);

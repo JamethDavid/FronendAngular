@@ -10,6 +10,7 @@ import { LoginService } from '../../../auth/pages/services/login.service';
 })
 export class LayoutPageComponent implements OnInit{
   usuario:string =""
+  public token:string='';
 
   public menuListInformeInventario =[
     {label: 'Reporte lista de precios',action: () => this.reporteListaToPrecio()},
@@ -55,32 +56,38 @@ export class LayoutPageComponent implements OnInit{
     window.URL.revokeObjectURL(url);
   }
   reporteAuxilioInventario() {
-    this.productoService.reporteAuxilioInventario().subscribe((data) => {
+    this.token = localStorage.getItem('token') ?? 'deful';
+    this.productoService.reporteAuxilioInventario(this.token).subscribe((data) => {
       this.generarYDescargarPDF(data, 'reporte-auxilio-inventario.pdf');
     });
   }
   reporteListaToPrecio() {
-    this.productoService.reporteListaToPrecio().subscribe((data) => {
+    this.token = localStorage.getItem('token') ?? 'deful';
+    this.productoService.reporteListaToPrecio(this.token).subscribe((data) => {
       this.generarYDescargarPDF(data, 'reporte-lista-precio.pdf');
     });
   }
   reporteListaToExistente() {
-    this.productoService.reporteListaToExistente().subscribe((data) => {
+    this.token = localStorage.getItem('token') ?? 'deful';
+    this.productoService.reporteListaToExistente(this.token).subscribe((data) => {
       this.generarYDescargarPDF(data, 'reporte-lista-existente.pdf');
     });
   }
   reporteListaToInventarioValorizaso() {
-    this.productoService.reporteListaToInventarioValorizado().subscribe((data) => {
+    this.token = localStorage.getItem('token') ?? 'deful';
+    this.productoService.reporteListaToInventarioValorizado(this.token).subscribe((data) => {
       this.generarYDescargarPDF(data, 'reporte-lista-inventario-valorizado.pdf');
     });
   }
   reporteVentaZonaFecha() {
-    this.productoService.reporteVentaZonaFecha().subscribe((data) => {
+    this.token = localStorage.getItem('token') ?? 'deful';
+    this.productoService.reporteVentaZonaFecha(this.token).subscribe((data) => {
       this.generarYDescargarPDF(data, 'reporte-venta-zona-fecha.pdf');
     });
   }
   reportePedidoPendiente() {
-    this.productoService.reportePedidoPendiente().subscribe((data) => {
+    this.token = localStorage.getItem('token') ?? 'deful';
+    this.productoService.reportePedidoPendiente(this.token).subscribe((data) => {
       this.generarYDescargarPDF(data, 'reporte-pedido-pendiente.pdf');
     });
   }

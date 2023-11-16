@@ -9,6 +9,7 @@ import { ProductoService } from '../../services/producto.service';
   ]
 })
 export class ReporteVentaZonaSoloComponent {
+  public token:string='';
   public zonas:Zona[] = [];
   public selectedNombre: string = "";
   constructor(private productoService:ProductoService){}
@@ -17,12 +18,13 @@ export class ReporteVentaZonaSoloComponent {
     this.getLineaZona();
   }
   getLineaZona():void{
-    this.productoService.getListaZona()
+    this.token = localStorage.getItem('token') ?? 'deful';
+    this.productoService.getListaZona(this.token)
     .subscribe(zonas =>this.zonas = zonas);
 
   }
   exportToVentaZonaPdf(nombre: string): void {
-    this.productoService.reporteListaToVentaZona(nombre)
+    this.productoService.reporteListaToVentaZona(nombre,this.token)
       .subscribe((data:Blob) => {
         const blob = new Blob([data], { type: 'application/pdf' });
         const url = window.URL.createObjectURL(blob);

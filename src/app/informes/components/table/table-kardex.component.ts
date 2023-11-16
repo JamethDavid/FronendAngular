@@ -12,6 +12,8 @@ import { ProductoService } from '../../services/producto.service';
 })
 export class TableKardexComponent implements AfterViewInit, OnInit{
   @Input()
+  public token:string='';
+  @Input()
   public Productos: Producto[]= [];
   @Input()
   public displayedColumns: string[] = ['referencia', 'nombre'];
@@ -32,7 +34,8 @@ export class TableKardexComponent implements AfterViewInit, OnInit{
 
   }
   getListaKardex(): void {
-    this.productoService.getListaKardexVendedor().subscribe(data => {
+    this.token = localStorage.getItem('token') ?? 'deful';
+    this.productoService.getListaKardexVendedor(this.token).subscribe(data => {
       this.Productos = data;
       this.dataSource.data = this.Productos;
     });

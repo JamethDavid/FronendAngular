@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit{
         next: (response: RestResponse) => {
           console.log("Llamada al servidor:", response);
           if (response.responseCode == OK) {
+            localStorage.setItem('token', response.body + "");
             this.router.navigateByUrl("informes");
             this.loginForm.reset();
           } else {

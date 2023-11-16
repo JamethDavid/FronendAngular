@@ -12,6 +12,7 @@ export class ReporteVentaLineaProductoFechaComponent {
   fechaInicio: Date = new Date();
   fechaFinal: Date = new Date();
   tituloFormulario:string = 'Reportes ventas por linea de producto fecha'
+  public token:string='';
 
   constructor(private datePipe: DatePipe,
     private  productoService:ProductoService ) {}
@@ -20,9 +21,10 @@ export class ReporteVentaLineaProductoFechaComponent {
     generarInformeLineaVentaProducto({ fechaInicio, fechaFinal }: { fechaInicio: Date, fechaFinal: Date }) {
       const fechaInicioFormateada = this.datePipe.transform(fechaInicio, 'yyyy-MM-ddTHH:mm:ss');
       const fechaFinalFormateada = this.datePipe.transform(fechaFinal, 'yyyy-MM-ddTHH:mm:ss');
+      this.token = localStorage.getItem('token') ?? 'deful';
 
       if (fechaInicioFormateada && fechaFinalFormateada) {
-        this.productoService.reporteListaToVentaLineaProductoFecha(fechaInicio, fechaFinal).subscribe((data: Blob) => {
+        this.productoService.reporteListaToVentaLineaProductoFecha(fechaInicio, fechaFinal,this.token).subscribe((data: Blob) => {
           const blob = new Blob([data], { type: 'application/pdf' });
           const url = window.URL.createObjectURL(blob);
           window.open(url);

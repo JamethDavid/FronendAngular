@@ -12,6 +12,7 @@ import { DatePipe } from '@angular/common';
   ]
 })
 export class FormularioAcomuladoVentaProductoComponent {
+  public token:string='';
 
   public titulo: string = 'Formulario Reporte Acomulado Venta Producto';
 
@@ -28,16 +29,18 @@ export class FormularioAcomuladoVentaProductoComponent {
     this.getListaCliente();
   }
   getListaCliente(): void {
-    this.productoService.getListaKardexVendedor().subscribe(data => {
+    this.token = localStorage.getItem('token') ?? 'deful';
+    this.productoService.getListaKardexVendedor(this.token).subscribe(data => {
       this.productos = data;
       this.dataSource.data = this.productos;
     });
   }
     generarInforme(fechaInicio: Date, fechaFinal: Date,element:Producto) {
+      this.token = localStorage.getItem('token') ?? 'deful';
       const fechaInicioFormateada = this.datePipe.transform(fechaInicio, 'yyyy-MM-ddTHH:mm:ss');
       const fechaFinalFormateada = this.datePipe.transform(fechaFinal, 'yyyy-MM-ddTHH:mm:ss');
       if (fechaInicioFormateada && fechaFinalFormateada) {
-        this.productoService.reporteListaToFacturaAcomulado(fechaInicio, fechaFinal,element.idProducto).subscribe((data: Blob) => {
+        this.productoService.reporteListaToFacturaAcomulado(fechaInicio, fechaFinal,element.idProducto,this.token).subscribe((data: Blob) => {
           const blob = new Blob([data], { type: 'application/pdf' });
           const url = window.URL.createObjectURL(blob);
           window.open(url);

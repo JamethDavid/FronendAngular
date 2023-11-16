@@ -10,6 +10,7 @@ import { DatePipe } from '@angular/common';
   ]
 })
 export class FormularioSalidaInventarioComponent {
+  public token:string='';
   fechaInicio: Date = new Date();
   fechaFinal: Date = new Date();
   tituloFormulario:string = 'Formulario Salida Inventario'
@@ -22,9 +23,10 @@ export class FormularioSalidaInventarioComponent {
     generarInformeSalidaInventario({ fechaInicio, fechaFinal }: { fechaInicio: Date, fechaFinal: Date }) {
       const fechaInicioFormateada = this.datePipe.transform(fechaInicio, 'yyyy-MM-ddTHH:mm:ss');
       const fechaFinalFormateada = this.datePipe.transform(fechaFinal, 'yyyy-MM-ddTHH:mm:ss');
+      this.token = localStorage.getItem('token') ?? 'deful';
 
       if (fechaInicioFormateada && fechaFinalFormateada) {
-        this.productoService.reporteToSalidaInventarioPdf(fechaInicio, fechaFinal).subscribe((data: Blob) => {
+        this.productoService.reporteToSalidaInventarioPdf(fechaInicio, fechaFinal,this.token).subscribe((data: Blob) => {
           const blob = new Blob([data], { type: 'application/pdf' });
           const url = window.URL.createObjectURL(blob);
           window.open(url);

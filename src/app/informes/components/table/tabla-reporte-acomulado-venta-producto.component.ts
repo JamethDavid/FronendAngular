@@ -14,6 +14,8 @@ import { DatePipe } from '@angular/common';
 })
 export class TablaReporteAcomuladoVentaProductoComponent {
   @Input()
+  public token:string='';
+  @Input()
   public productos: Producto[] = [];
   @Input()
   public displayedColumns: string[] = ['referencia', 'nombre'];
@@ -43,7 +45,8 @@ export class TablaReporteAcomuladoVentaProductoComponent {
   }
 
   getListaProducto(): void {
-    this.productoService.getListaKardexVendedor().subscribe(data => {
+    this.token = localStorage.getItem('token') ?? 'deful';
+    this.productoService.getListaKardexVendedor(this.token).subscribe(data => {
       this.productos = data;
       this.dataSource.data = this.productos;
     });

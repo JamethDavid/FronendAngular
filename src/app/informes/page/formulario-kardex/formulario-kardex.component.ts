@@ -12,6 +12,7 @@ import { Producto } from '../../interfaces/producto.interface';
 })
 export class FormularioKardexComponent implements OnInit{
 
+  public token:string='';
   public titulo: string = 'Formulario Kardex';
   public Productos: Producto[] = [];
   public displayedColumns: string[] = ['referencia', 'nombre'];
@@ -26,14 +27,15 @@ export class FormularioKardexComponent implements OnInit{
 
 
   getListaKardex(): void {
-    this.productoService.getListaKardexVendedor().subscribe(data => {
+    this.token = localStorage.getItem('token') ?? 'deful';
+    this.productoService.getListaKardexVendedor(this.token).subscribe(data => {
       this.Productos = data;
       this.dataSource.data = this.Productos;
     });
   }
 
   handleRowClick(element : Producto): void{
-    this.productoService.reporteListaToKardex(element.idProducto)
+    this.productoService.reporteListaToKardex(element.idProducto,this.token)
     .subscribe((data:Blob) => {
       const blob = new Blob([data], { type: 'application/pdf' });
       const url = window.URL.createObjectURL(blob);

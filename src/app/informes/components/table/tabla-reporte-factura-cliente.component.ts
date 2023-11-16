@@ -14,6 +14,8 @@ import { DatePipe } from '@angular/common';
 })
 export class TablaReporteFacturaClienteComponent implements OnInit {
   @Input()
+  public token:string='';
+  @Input()
   public tablas: Tabla[] = [];
   @Input()
   public displayedColumns: string[] = ['referencia', 'nombre'];
@@ -42,7 +44,8 @@ export class TablaReporteFacturaClienteComponent implements OnInit {
   }
 
   getListaTabla(): void {
-    this.productoService.getListaClienteId().subscribe(data => {
+    this.token = localStorage.getItem('token') ?? 'deful';
+    this.productoService.getListaClienteId(this.token).subscribe(data => {
       this.tablas = data;
       this.dataSource.data = this.tablas;
     });
