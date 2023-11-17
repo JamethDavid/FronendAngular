@@ -49,6 +49,6 @@ export class LoginService {
    * @param userModel
    */
   public cerrarSesion(token: any): Observable<RestResponse> {
-    return this.http.post<RestResponse>(this.baseUrl + 'logout', token);
+    return this.http.post<RestResponse>(this.baseUrl + '/logout', token);
   }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { ProductoService } from '../../services/producto.service';
 import { LoginService } from '../../../auth/pages/services/login.service';
+import { Router } from '@angular/router';
+import { RestResponse } from '../../interfaces/RestResponse.interface';
 
 @Component({
   selector: 'app-layout-page',
@@ -41,7 +43,7 @@ export class LayoutPageComponent implements OnInit{
     {label: 'Reporte pedidos pendientes por factura',action:() => this.reportePedidoPendiente()},
   ]
 
-  constructor(private productoService:ProductoService,private loginService:LoginService){}
+  constructor(private productoService:ProductoService,private loginService:LoginService,private router:Router){}
   ngOnInit(): void {
   }
 
@@ -91,5 +93,40 @@ export class LayoutPageComponent implements OnInit{
       this.generarYDescargarPDF(data, 'reporte-pedido-pendiente.pdf');
     });
   }
+  logout(): void {
+    this.token = localStorage.getItem("token")?? ''
+    this.loginService.cerrarSesion(this.token).subscribe(res => {
+      console.log("token: "+this.token);
+      console.log("RESPONSE: "+res.message);
+    }, (errorServicio) => {
+      console.log('ERROR: ' + JSON.stringify(errorServicio));
+    });
 
+    this.router.navigate(['/login']);
+    localStorage.clear();
+    sessionStorage.clear();
+    location.reload();
+  }
+    /*
+    this.token = localStorage.getItem('token') ?? 'deful';
+    this.loginService.cerrarSesion(this.token).subscribe({
+      next: (res: RestResponse) => {
+        console.log("toke:" +this.token )
+        console.log("RESPONSE: " + res.message);
+        this.router.navigate(['login']);
+        localStorage.clear();
+        sessionStorage.clear();
+        location.reload();
+      },
+      error: (errorServicio) => {
+        console.log('ERROR: ' + JSON.stringify(errorServicio));
+        this.router.navigate(['login']);
+        localStorage.clear();
+        sessionStorage.clear();
+        location.reload();
+      }
+    });
+  }
+*/
 }
+
