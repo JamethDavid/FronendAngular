@@ -102,7 +102,6 @@ export class LayoutPageComponent implements OnInit{
       console.log('ERROR: ' + JSON.stringify(errorServicio));
     });
 
-    this.router.navigate(['/login']);
     localStorage.clear();
     sessionStorage.clear();
     location.reload();

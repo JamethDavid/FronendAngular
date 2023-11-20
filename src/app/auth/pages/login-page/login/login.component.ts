@@ -15,7 +15,7 @@ import { OK } from 'src/utilidades/httpstatus';
 export class LoginComponent implements OnInit{
 
   loginForm = this.formBuilder.group({
-    usuario:['123456',[Validators.required]],
+    usuario:['',[Validators.required]],
     password:['',[Validators.required]],
   })
   constructor(private formBuilder: FormBuilder,private router:Router, private loginService:LoginService) {}
